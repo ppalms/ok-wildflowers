@@ -6,7 +6,7 @@ image: ppalms/okwildflowers
 
 # Deploy to these servers.
 servers:
-  - 67.205.172.143
+  - 143.244.173.20
 
 # Credentials for your image host.
 registry:
@@ -21,7 +21,7 @@ registry:
 # Remember to run `kamal env push` after making changes!
 env:
   clear:
-    DB_HOST: 178.128.159.211
+    DB_HOST: 143.244.173.18
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_USER
@@ -44,7 +44,7 @@ env:
 accessories:
   db:
     image: postgres:15
-    host: 178.128.159.211
+    host: 143.244.173.18
     port: 5432
     env:
       clear:
