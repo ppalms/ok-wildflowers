@@ -1,25 +1,7 @@
 <div id="<%= dom_id plant %>">
-  <p>
-    <strong>Scientific name:</strong>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Scientific name:</strong>
     <%= plant.scientific_name %>
   </p>
 
-  <p>
-    <strong>Common names:</strong>
-    <%= plant.common_names %>
-  </p>
-
-  <p>
-    <strong>Bloom time:</strong>
-    <%= plant.bloom_time %>
-  </p>
-
-  <p>
-    <strong>Bloom colors:</strong>
-    <%= plant.bloom_colors %>
-  </p>
-
-  <p>
-    Last modified <%= time_tag plant.updated_at, "data-local": "time-ago" %>
-  </p>
 </div>

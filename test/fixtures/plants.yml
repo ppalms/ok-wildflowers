@@ -1,13 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  scientific_name: Gaillardia pulchella
-  common_names: [Indian Blanket]
-  bloom_colors: [Red, Yellow]
-  bloom_time: [May, Jun, Jul, Aug]
+  scientific_name: MyString
 
 two:
-  scientific_name: Rudbeckia hirta
-  common_names: [Black-Eyed Susan]
-  bloom_colors: [Yellow]
-  bloom_time: [Jun, Jul, Aug, Sep, Oct]
+  scientific_name: MyString

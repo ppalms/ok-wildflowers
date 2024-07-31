@@ -14,9 +14,6 @@ class PlantsTest < ApplicationSystemTestCase
     visit plants_url
     click_on "New plant"
 
-    fill_in "Bloom colors", with: @plant.bloom_colors
-    fill_in "Bloom time", with: @plant.bloom_time
-    fill_in "Common names", with: @plant.common_names
     fill_in "Scientific name", with: @plant.scientific_name
     click_on "Create Plant"
 
@@ -28,9 +25,6 @@ class PlantsTest < ApplicationSystemTestCase
     visit plant_url(@plant)
     click_on "Edit this plant", match: :first
 
-    fill_in "Bloom colors", with: @plant.bloom_colors
-    fill_in "Bloom time", with: @plant.bloom_time
-    fill_in "Common names", with: @plant.common_names
     fill_in "Scientific name", with: @plant.scientific_name
     click_on "Update Plant"
 

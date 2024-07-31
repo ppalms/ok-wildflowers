@@ -17,7 +17,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create plant" do
     assert_difference("Plant.count") do
-      post plants_url, params: { plant: { bloom_colors: @plant.bloom_colors, bloom_time: @plant.bloom_time, common_names: @plant.common_names, scientific_name: @plant.scientific_name } }
+      post plants_url, params: { plant: { scientific_name: @plant.scientific_name } }
     end
 
     assert_redirected_to plant_url(Plant.last)
@@ -34,7 +34,7 @@ class PlantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update plant" do
-    patch plant_url(@plant), params: { plant: { bloom_colors: @plant.bloom_colors, bloom_time: @plant.bloom_time, common_names: @plant.common_names, scientific_name: @plant.scientific_name } }
+    patch plant_url(@plant), params: { plant: { scientific_name: @plant.scientific_name } }
     assert_redirected_to plant_url(@plant)
   end
 

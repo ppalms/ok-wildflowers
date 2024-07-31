@@ -7,10 +7,3 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-plants = [
-  { scientific_name: "Gaillardia pulchella", common_names:["Indian Blanket"], bloom_colors: ["Red", "Yellow"], bloom_time: ["May","Jun","Jul","Aug"] }
-]
-
-plants.each do |plant_attributes|
-  Plant.find_or_create_by!(plant_attributes)
-end
