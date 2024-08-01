@@ -1,6 +1,5 @@
 class PlantsController < ApplicationController
-  # http_basic_authenticate_with name: ENV['APP_USER'], password: ENV['APP_PASSWORD']
-  before_action :set_plant, only: %i[show edit update destroy]
+  before_action :set_plant, only: %i[ show edit update destroy ]
 
   # GET /plants or /plants.json
   def index
@@ -59,14 +58,13 @@ class PlantsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_plant
+      @plant = Plant.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_plant
-    @plant = Plant.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def plant_params
-    params.require(:plant).permit(:scientific_name)
-  end
+    # Only allow a list of trusted parameters through.
+    def plant_params
+      params.require(:plant).permit(:scientific_name)
+    end
 end
