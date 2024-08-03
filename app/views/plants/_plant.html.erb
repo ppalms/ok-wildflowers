@@ -3,4 +3,10 @@
     <strong class="block font-medium mb-1">Scientific name:</strong>
     <%= plant.scientific_name %>
   </p>
+
+  <p class="my-5">
+    <% if plant.photo.attached? %>
+      <%= image_tag plant.photo.variant(:thumb) %>
+    <% end %>
+  </p>
 </div>
