@@ -11,7 +11,7 @@ servers:
       - 143.244.173.20
     labels:
       traefik.http.routers.plants.entrypoints: websecure
-      traefik.http.routers.plants.rule: Host(`ppalmer.dev`)
+      traefik.http.routers.plants.rule: Host(`plants.ppalmer.dev`)
       traefik.http.routers.plants.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
