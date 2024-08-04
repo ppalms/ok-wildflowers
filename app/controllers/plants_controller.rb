@@ -1,5 +1,4 @@
 class PlantsController < ApplicationController
-  http_basic_authenticate_with name: ENV['APP_USER'], password: ENV['APP_PASSWORD']
   before_action :set_plant, only: %i[ show edit update destroy ]
 
   # GET /plants or /plants.json
