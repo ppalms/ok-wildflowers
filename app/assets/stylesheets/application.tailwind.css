@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium;
+  }
+
+  .btn-danger {
+    @apply rounded-lg py-3 px-5 bg-red-100 inline-block font-medium;
+  }
+
+  .text-field {
+    @apply block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full;
   }
 }
-
-*/

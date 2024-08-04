@@ -8,7 +8,7 @@
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Plants</h1>
     <div class="flex gap-2">
-      <%= link_to "New plant", new_plant_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to "New plant", new_plant_path, class: "btn-primary" %>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
     <% @plants.each do |plant| %>
       <%= render plant %>
       <p>
-        <%= link_to "Show this plant", plant, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this plant", plant, class: "btn-secondary" %>
       </p>
     <% end %>
   </div>
