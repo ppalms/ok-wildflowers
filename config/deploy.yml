@@ -86,7 +86,7 @@ traefik:
   options:
     publish:
       - "443:443"
-    volumes:
+    volume:
       - "/letsencrypt/acme.json:/letsencrypt/acme.json"
   args:
     entrypoints.web.address: ":80"
