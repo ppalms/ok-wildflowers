@@ -7,6 +7,11 @@
   </p>
 
   <p class="my-5">
+    <strong class="block font-medium mb-1">Bloom colors:</strong>
+    <%= plant.bloom_colors.map(&:name).join(", ") %>
+  </p>
+
+  <p class="my-5">
     <% if plant.photo.attached? %>
       <%= image_tag plant.photo.variant(:thumb) %>
     <% end %>

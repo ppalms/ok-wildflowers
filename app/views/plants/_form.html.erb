@@ -13,12 +13,17 @@
 
   <div class="my-5">
     <%= form.label :common_names %>
-    <%= form.text_field :common_names_list, class: "text-field", value: @plant.common_names_list, placeholder: "Enter common names separated by commas" %>
+    <%= form.text_field :common_names_list, class: "text-field", value: @plant.common_names_list, placeholder: "Enter names separated by commas" %>
   </div>
 
   <div class="my-5">
     <%= form.label :scientific_name %>
     <%= form.text_field :scientific_name, class: "text-field" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :bloom_color_ids, "Bloom Colors" %>
+    <%= form.collection_select :bloom_color_ids, BloomColor.all, :id, :name, {}, { multiple: true, class: "block shadow border rounded-l-md border-gray-400 outline-none px-3 py-2 mt-2 w-full" } %>
   </div>
 
   <div class="my-5">
