@@ -52,7 +52,7 @@ class PlantsController < ApplicationController
     @plant.destroy!
 
     respond_to do |format|
-      format.html { redirect_to plants_url, notice: "Plant was successfully destroyed." }
+      format.html { redirect_to plants_url, notice: "Plant was successfully deleted." }
       format.json { head :no_content }
     end
   end
