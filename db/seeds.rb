@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet", "White", "Black"].each do |color_name|
+%w[Red Orange Yellow Green Blue Indigo Violet White Black Brown].each do |color_name|
   BloomColor.find_or_create_by!(name: color_name)
 end
 
