@@ -1,5 +1,12 @@
 <div id="<%= dom_id plant %>">
-  <h2 class="font-bold text-2xl"><%= plant.common_names.first %></h2>
+  <h1><%= plant.common_names.first %></h1>
+  
+  <% if plant.common_names.size > 1 %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Other common names:</strong>
+      <%= plant.common_names.drop(1).join(", ") %>
+    </p>
+  <% end %>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Scientific name:</strong>

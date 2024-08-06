@@ -5,19 +5,37 @@
 
   <% content_for :title, "Plants" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Plants</h1>
+  <div class="flex justify-between items-center pb-4">
+    <h1>Plants</h1>
     <div class="flex gap-2">
       <%= link_to "New plant", new_plant_path, class: "btn-primary" %>
     </div>
   </div>
 
-  <div id="plants" class="min-w-full">
+  <div id="plants">
     <% @plants.each do |plant| %>
-      <%= render plant %>
-      <p>
-        <%= link_to "Show this plant", plant, class: "btn-secondary" %>
-      </p>
+      <% if @plants.empty? %>
+        <p class="text-center">No plants found.</p>
+      <% else %>
+        <%= link_to plant do %>
+          <div class="flex gap-2 p-2 -mx-2 rounded hover:cursor-pointer hover:bg-blue-50 hover:transition duration-300">
+            <div>
+              <% if plant.photo.attached? %>
+                <%= image_tag plant.photo.variant(:thumb), class: "rounded border" %>
+              <% end %>
+            </div>
+            <div class="grow">
+              <p class="text-xl font-bold"><%= plant.common_names.first %></p>
+              <p><%= plant.scientific_name %></p>
+            </div>
+            <div class="pr-2 text-right">
+              <strong>Blooms</strong>
+              <p><%= plant.bloom_colors.map(&:name).join(", ") %></p>
+              <p><%= plant.bloom_months.map(&:month_name).join(", ") %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
