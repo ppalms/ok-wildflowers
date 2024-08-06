@@ -12,6 +12,11 @@
   </p>
 
   <p class="my-5">
+    <strong class="block font-medium mb-1">Bloom time:</strong>
+    <%= plant.bloom_months.map(&:month_name).join(", ") %>
+  </p>
+
+  <p class="my-5">
     <% if plant.photo.attached? %>
       <%= image_tag plant.photo.variant(:thumb) %>
     <% end %>

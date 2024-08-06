@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_05_165950) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_06_013907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_165950) do
   create_table "bloom_colors_plants", id: false, force: :cascade do |t|
     t.bigint "plant_id", null: false
     t.bigint "bloom_color_id", null: false
+  end
+
+  create_table "bloom_months", force: :cascade do |t|
+    t.string "month_name"
+    t.integer "month_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["month_number"], name: "index_bloom_months_on_month_number"
+  end
+
+  create_table "bloom_months_plants", id: false, force: :cascade do |t|
+    t.bigint "plant_id", null: false
+    t.bigint "bloom_month_id", null: false
   end
 
   create_table "plants", force: :cascade do |t|

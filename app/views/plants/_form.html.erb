@@ -23,7 +23,12 @@
 
   <div class="my-5">
     <%= form.label :bloom_color_ids, "Bloom Colors" %>
-    <%= form.collection_select :bloom_color_ids, BloomColor.all, :id, :name, {}, { multiple: true, class: "block shadow border rounded-l-md border-gray-400 outline-none px-3 py-2 mt-2 w-full" } %>
+    <%= form.collection_select :bloom_color_ids, BloomColor.all, :id, :name, {}, { multiple: true, class: "multi-select" } %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :bloom_month_ids, "Bloom Time" %>
+    <%= form.collection_select :bloom_month_ids, BloomMonth.all, :id, :month_name, {}, { multiple: true, class: "multi-select" } %>
   </div>
 
   <div class="my-5">
