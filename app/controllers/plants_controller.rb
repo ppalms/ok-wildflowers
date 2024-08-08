@@ -3,7 +3,7 @@ class PlantsController < ApplicationController
 
   # GET /plants or /plants.json
   def index
-    @plants = Plant.all.sort_by { |plant| plant.common_names.first }
+    @plants = Plant.all.order(:common_name)
   end
 
   # GET /plants/1 or /plants/1.json
@@ -65,6 +65,6 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:scientific_name, :common_names_list, :photo, bloom_color_ids: [], bloom_month_ids: [])
+      params.require(:plant).permit(:scientific_name, :common_name, :other_common_names_list, :photo, bloom_color_ids: [], bloom_month_ids: [])
     end
 end

@@ -1,10 +1,10 @@
 class Plant < ApplicationRecord
-  def common_names_list
-    common_names.join(", ")
+  def other_common_names_list
+    other_common_names.join(", ")
   end
 
-  def common_names_list=(value)
-    self.common_names = value.split(",").map(&:strip)
+  def other_common_names_list=(value)
+    self.other_common_names = value.split(",").map(&:strip)
   end
 
   has_and_belongs_to_many :bloom_colors

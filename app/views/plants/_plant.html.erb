@@ -1,28 +1,25 @@
 <div id="<%= dom_id plant %>">
-  <h1><%= plant.common_names.first %></h1>
-  
-  <% if plant.common_names.size > 1 %>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Other common names:</strong>
-      <%= plant.common_names.drop(1).join(", ") %>
-    </p>
-  <% end %>
-
+  <h1><%= plant.common_name %></h1>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Common name:</strong>
+    <%= plant.common_name %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Other common names:</strong>
+    <%= plant.other_common_names.join(", ") %>
+  </p>
   <p class="my-5">
     <strong class="block font-medium mb-1">Scientific name:</strong>
     <%= plant.scientific_name %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Bloom colors:</strong>
     <%= plant.bloom_colors.map(&:name).join(", ") %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Bloom time:</strong>
     <%= plant.bloom_months.map(&:month_name).join(", ") %>
   </p>
-
   <p class="my-5">
     <% if plant.photo.attached? %>
       <%= image_tag plant.photo.variant(:thumb) %>

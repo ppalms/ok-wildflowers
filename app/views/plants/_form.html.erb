@@ -2,7 +2,6 @@
   <% if plant.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
-
       <ul>
         <% plant.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,27 +9,26 @@
       </ul>
     </div>
   <% end %>
-
   <div class="my-5">
-    <%= form.label :common_names %>
-    <%= form.text_field :common_names_list, class: "text-field", value: @plant.common_names_list, placeholder: "Enter names separated by commas" %>
+    <%= form.label :common_name %>
+    <%= form.text_field :common_name, class: "text-field" %>
   </div>
-
+  <div class="my-5">
+    <%= form.label :other_common_names %>
+    <%= form.text_field :other_common_names_list, class: "text-field", value: @plant.other_common_names_list, placeholder: "Enter names separated by commas" %>
+  </div>
   <div class="my-5">
     <%= form.label :scientific_name %>
     <%= form.text_field :scientific_name, class: "text-field" %>
   </div>
-
   <div class="my-5">
     <%= form.label :bloom_color_ids, "Bloom Colors" %>
     <%= form.collection_select :bloom_color_ids, BloomColor.all, :id, :name, {}, { multiple: true, class: "multi-select" } %>
   </div>
-
   <div class="my-5">
     <%= form.label :bloom_month_ids, "Bloom Time" %>
     <%= form.collection_select :bloom_month_ids, BloomMonth.all, :id, :month_name, {}, { multiple: true, class: "multi-select" } %>
   </div>
-
   <div class="my-5">
     <%= form.label :photo %>
     <%= form.file_field :photo %>
@@ -40,7 +38,6 @@
       </div>
     <% end %>
   </div>
-
   <div class="inline">
     <%= form.submit class: "btn-primary" %>
   </div>
