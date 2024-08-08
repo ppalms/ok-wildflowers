@@ -1,13 +1,11 @@
 <div id="<%= dom_id plant %>">
   <h1><%= plant.common_name %></h1>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Common name:</strong>
-    <%= plant.common_name %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Other common names:</strong>
-    <%= plant.other_common_names.join(", ") %>
-  </p>
+  <% if plant.other_common_names.length > 0 %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Other common names:</strong>
+      <%= plant.other_common_names.join(", ") %>
+    </p>
+  <% end %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Scientific name:</strong>
     <%= plant.scientific_name %>
