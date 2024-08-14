@@ -6,4 +6,35 @@
       <%= link_to "Reset", plants_path, class: "btn-secondary text-center w-1/3 sm:w-auto" %>
     </div>
   </div>
+  <div class="my-5">
+    <%= form.label :bloom_colors, "Bloom Colors" %>
+    <% BloomColor.all.each do |bloom_color| %>
+      <div>
+        <%= check_box_tag '', bloom_color.id, params[:bloom_colors]&.include?(bloom_color.id.to_s), class: 'bloom-color-checkbox' %>
+        <%= label_tag "bloom_color_checkboxes_#{bloom_color.id}", bloom_color.name %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.hidden_field :bloom_colors, id: "bloom_colors_hidden_field" %>
 <% end %>
+<script>
+  // Function to update the hidden field with selected checkbox values
+  function updateBloomColors() {
+    var selectedColors = Array.from(document.querySelectorAll(".bloom-color-checkbox:checked"))
+                             .map(cb => cb.value);
+    document.getElementById("bloom_colors_hidden_field").value = selectedColors.join(",");
+  }
+
+  // Attach the update function to the checkbox change events
+  document.querySelectorAll(".bloom-color-checkbox").forEach(function(checkbox) {
+    checkbox.addEventListener("change", updateBloomColors);
+  });
+
+  // Initial update in case the form is pre-populated with selected checkboxes
+  updateBloomColors();
+
+  // Ensure the hidden field is updated on form submission
+  document.getElementById("plant-search-form").addEventListener("submit", function(event) {
+    updateBloomColors();
+  });
+</script>
