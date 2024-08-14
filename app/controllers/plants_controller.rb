@@ -5,6 +5,7 @@ class PlantsController < ApplicationController
   def index
     @plants = Plant.all.order(:common_name)
     @plants = @plants.where("common_name ILIKE ?", "%#{params[:name]}%").or(@plants.where("scientific_name ILIKE ?", "%#{params[:name]}%")) if params[:name].present?
+    @plants = @plants.joins(:bloom_colors).where(bloom_colors: { id: params[:bloom_colors].split(",") }).distinct if params[:bloom_colors].present?
   end
 
   # GET /plants/1 or /plants/1.json

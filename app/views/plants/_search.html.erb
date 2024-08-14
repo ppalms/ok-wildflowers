@@ -1,4 +1,5 @@
-<%= form_with url: plants_path, method: :get do |form| %>
+<%= form_with url: plants_path, method: :get, id: 'plant-search-form' do |form| %>
+  <%= form.label :name, "Plant Name", class: "font-semibold" %>
   <div class="sm:flex items-center">
     <%= form.text_field :name, value: params[:name], placeholder: "Search by common or scientific name", class: "text-field mb-2 sm:mb-0 sm:mr-2" %>
     <div class="flex gap-2">
@@ -7,27 +8,29 @@
     </div>
   </div>
   <div class="my-5">
-    <%= form.label :bloom_colors, "Bloom Colors" %>
-    <% BloomColor.all.each do |bloom_color| %>
-      <div>
-        <%= check_box_tag '', bloom_color.id, params[:bloom_colors]&.include?(bloom_color.id.to_s), class: 'bloom-color-checkbox' %>
-        <%= label_tag "bloom_color_checkboxes_#{bloom_color.id}", bloom_color.name %>
-      </div>
-    <% end %>
+    <%= form.label :bloom_colors, "Bloom Colors", class: "font-semibold" %>
+    <div class="grid grid-cols-2 gap-1 mt-1">
+      <% BloomColor.all.each do |bloom_color| %>
+        <div>
+          <%= check_box_tag '', bloom_color.id, params[:bloom_colors]&.include?(bloom_color.id.to_s), class: 'bloom-color-checkbox', id: "bloom_color_checkbox_#{bloom_color.id}" %>
+          <%= label_tag "bloom_color_checkbox_#{bloom_color.id}", bloom_color.name %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <%= form.hidden_field :bloom_colors, id: "bloom_colors_hidden_field" %>
+  <%= form.hidden_field :bloom_colors, id: "bloom_colors_hidden" %>
 <% end %>
 <script>
-  // Function to update the hidden field with selected checkbox values
   function updateBloomColors() {
-    var selectedColors = Array.from(document.querySelectorAll(".bloom-color-checkbox:checked"))
-                             .map(cb => cb.value);
-    document.getElementById("bloom_colors_hidden_field").value = selectedColors.join(",");
+    var selectedColors = Array.from(document.querySelectorAll(".bloom-color-checkbox:checked")).map(cb => cb.value);
+    document.getElementById("bloom_colors_hidden").value = selectedColors.join(",");
   }
 
-  // Attach the update function to the checkbox change events
   document.querySelectorAll(".bloom-color-checkbox").forEach(function(checkbox) {
     checkbox.addEventListener("change", updateBloomColors);
+    checkbox.addEventListener("change", function() {
+      document.getElementById("plant-search-form").submit();
+    });
   });
 
   // Initial update in case the form is pre-populated with selected checkboxes
