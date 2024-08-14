@@ -27,7 +27,7 @@
             </div>
             <div class="hidden sm:block pr-2 text-right">
               <strong>Blooms</strong>
-              <p><%= plant.bloom_colors.map(&:name).join(", ") %></p>
+              <p><%= plant.bloom_colors.order(:name).map(&:name).join(", ") %></p>
               <p><%= plant.bloom_months.map(&:month_name).join(", ") %></p>
             </div>
           </div>
