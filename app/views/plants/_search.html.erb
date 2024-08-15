@@ -10,7 +10,7 @@
   <div class="py-5 max-w-md">
     <%= form.label :bloom_colors, "Bloom Colors", class: "font-semibold" %>
     <div class="grid grid-cols-2 gap-1 mt-1">
-      <% BloomColor.all.each do |bloom_color| %>
+      <% BloomColor.all.order(:name).each do |bloom_color| %>
         <div>
           <%= check_box_tag '', bloom_color.id, (params[:bloom_colors] || '').split(',').include?(bloom_color.id.to_s), class: 'bloom-color-checkbox', id: "bloom_color_checkbox_#{bloom_color.id}" %>
           <%= label_tag "bloom_color_checkbox_#{bloom_color.id}", bloom_color.name %>
