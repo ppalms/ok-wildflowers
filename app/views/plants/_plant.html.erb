@@ -24,16 +24,18 @@
     <% end %>
   </p>
 </div>
-<div id="image-modal" class="hidden fixed inset-0 z-50 justify-center items-center bg-black bg-opacity-75">
-  <div class="flex justify-center w-5/6 h-5/6 relative">
-    <div class="relative">
-      <div class="flex justify-center items-center absolute -top-12 right-0 w-9 h-9 rounded-full bg-gray-700 hover:bg-gray-600 outline outline-1 outline-gray-100 shadow-sm cursor-pointer">
-        <span id="close-modal" class="text-white text-3xl -mt-1">&times;</span>
+<% if plant.photo.attached? %>
+  <div id="image-modal" class="hidden fixed inset-0 z-50 justify-center items-center bg-black bg-opacity-75">
+    <div class="flex justify-center w-5/6 h-5/6 relative">
+      <div class="relative">
+        <div class="flex justify-center items-center absolute -top-12 right-0 w-9 h-9 rounded-full bg-gray-700 hover:bg-gray-600 outline outline-1 outline-gray-100 shadow-sm cursor-pointer">
+          <span id="close-modal" class="text-white text-3xl -mt-1">&times;</span>
+        </div>
+        <%= image_tag plant.photo, class: "object-contain max-w-full max-h-full rounded-lg" %>
       </div>
-      <%= image_tag plant.photo, class: "object-contain max-w-full max-h-full rounded-lg" %>
     </div>
   </div>
-</div>
+<% end %>
 <script>
   document.getElementById("thumbnail").addEventListener("click", function() {
     document.getElementById("image-modal").classList.add("flex");
