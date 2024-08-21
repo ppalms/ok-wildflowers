@@ -1,15 +1,16 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @location %>
-
-    <%= link_to "Edit this location", edit_location_path(@location), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to locations", locations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this location", @location, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class="w-full">
+  <%= link_to sanitize("&larr; Back to locations"), locations_path, class: "font-medium py-3" %>
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <%= turbo_frame_tag @location do %>
+    <div class="flex justify-between items-center mt-6">
+      <h1><%= @location.name %></h1>
+      <%= link_to "Edit", edit_location_path(@location), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>
+  <% end %>
+  <%# TODO turbo_frame_tag plants %>
+  <div class="inline-block">
+    <%= button_to "Destroy this location", @location, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
 </div>

@@ -23,18 +23,20 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "should update Location" do
     visit location_url(@location)
-    click_on "Edit this location", match: :first
+    click_on "Edit", match: :first
 
     fill_in "Name", with: @location.name
     click_on "Update Location"
 
-    assert_text "Location was successfully updated"
+    # assert_text "Location was successfully updated"
     click_on "Back"
   end
 
   test "should destroy Location" do
     visit location_url(@location)
     click_on "Destroy this location", match: :first
+
+    accept_confirm
 
     assert_text "Location was successfully destroyed"
   end

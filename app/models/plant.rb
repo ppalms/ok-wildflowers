@@ -3,7 +3,8 @@ class Plant < ApplicationRecord
 
   has_and_belongs_to_many :bloom_months
 
-  has_many :locations, through: :plant_locations
+  has_many :plantings, dependent: :destroy
+  has_many :locations, through: :plantings
 
   has_one_attached :photo do |photo|
     photo.variant :thumb, resize_to_limit: [100, 100], preprocessed: true

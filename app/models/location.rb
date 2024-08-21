@@ -1,3 +1,4 @@
 class Location < ApplicationRecord
-  has_many :plants, through: :plant_locations
+  has_many :plantings, dependent: :destroy
+  has_many :plants, through: :plantings
 end
