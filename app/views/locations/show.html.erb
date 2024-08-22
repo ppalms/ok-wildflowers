@@ -1,7 +1,7 @@
 <div class="w-full">
   <%= link_to sanitize("&larr; Back to locations"), locations_path, class: "font-medium py-3" %>
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="notice" id="notice"><%= notice %></p>
   <% end %>
   <%= turbo_frame_tag @location do %>
     <div class="flex justify-between items-center mt-6">

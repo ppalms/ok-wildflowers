@@ -30,4 +30,8 @@
   .multi-select {
     @apply block shadow border rounded-l-md border-gray-400 outline-none px-3 py-2 w-full;
   }
+
+  .notice {
+    @apply py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block;
+  }
 }

@@ -1,4 +1,8 @@
-<div class="w-full"><% content_for :title, "Plants" %>
+<% content_for :title, "Plants" %>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="notice" id="notice"><%= notice %></p>
+  <% end %>
   <div class="flex justify-between items-center py-4">
     <h1>Plants</h1>
     <div class="flex gap-2">
@@ -6,9 +10,6 @@
     </div>
   </div>
   <%= render partial: 'search' %>
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
   <div id="plant_list">
     <% if @plants.empty? %>
       <p class="text-center">No plants found.</p>
