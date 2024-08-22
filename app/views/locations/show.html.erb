@@ -9,7 +9,14 @@
       <%= link_to "Edit", edit_location_path(@location), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>
   <% end %>
-  <%# TODO turbo_frame_tag plants %>
+  <div class="my-2">
+    <h2>Plants</h2>
+    <%= render partial: "plant_list" %>
+  </div>
+  <div class="my-2">
+    <h2>Add a Plant</h2>
+    <%= render partial: "plant_form" %>
+  </div>
   <div class="inline-block">
     <%= button_to "Destroy this location", @location, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>

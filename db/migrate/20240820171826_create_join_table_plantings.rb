@@ -4,5 +4,8 @@ class CreateJoinTablePlantings < ActiveRecord::Migration[7.1]
       t.index [:location_id, :plant_id]
       t.index [:plant_id, :location_id]
     end
+
+    add_foreign_key :plantings, :locations
+    add_foreign_key :plantings, :plants
   end
 end

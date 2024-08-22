@@ -36,6 +36,8 @@ class PlantsTest < ApplicationSystemTestCase
     visit plant_url(@plant)
     click_on "Destroy this plant", match: :first
 
-    assert_text "Plant was successfully destroyed"
+    accept_confirm
+
+    assert_text "Plant was successfully deleted"
   end
 end

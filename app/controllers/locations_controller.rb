@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: %i[show edit update destroy]
+  before_action :set_location, only: %i[show edit update destroy add_plant remove_plant]
 
   # GET /locations or /locations.json
   def index
@@ -7,7 +7,10 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1 or /locations/1.json
-  def show; end
+  def show
+    @plants = @location.plants
+    @available_plants = Plant.where.not(id: @plants.pluck(:id))
+  end
 
   # GET /locations/new
   def new
@@ -55,14 +58,46 @@ class LocationsController < ApplicationController
     end
   end
 
+  def add_plant
+    plant = Plant.find(params[:plant_id])
+    @location.plants << plant unless @location.plants.include?(plant)
+
+    respond_to do |format|
+      format.turbo_stream do
+        @plants = @location.plants
+        @available_plants = Plant.where.not(id: @plants.pluck(:id))
+        render turbo_stream: [
+          turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants }),
+          turbo_stream.replace("plant_form", partial: "locations/plant_form", locals: { available_plants: @available_plants })
+        ]
+      end
+      format.html { redirect_to @location, notice: 'Plant was successfully added.' }
+    end
+  end
+
+  def remove_plant
+    plant = Plant.find(params[:plant_id])
+    @location.plants.delete(plant)
+
+    respond_to do |format|
+      format.turbo_stream do
+        @plants = @location.plants
+        @available_plants = Plant.where.not(id: @plants.pluck(:id))
+        render turbo_stream: [
+          turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants }),
+          turbo_stream.replace("plant_form", partial: "locations/plant_form", locals: { available_plants: @available_plants })
+        ]
+      end
+      format.html { redirect_to @location, notice: 'Plant was successfully removed.' }
+    end
+  end
+
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_location
     @location = Location.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def location_params
     params.require(:location).permit(:name)
   end

@@ -1,9 +1,49 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  month_name: MyString
+january:
+  month_name: January
   month_number: 1
 
-two:
-  month_name: MyString
-  month_number: 1
+february:
+  month_name: February
+  month_number: 2
+
+march:
+  month_name: March
+  month_number: 3
+
+april:
+  month_name: April
+  month_number: 4
+
+may:
+  month_name: May
+  month_number: 5
+
+june:
+  month_name: June
+  month_number: 6
+
+july:
+  month_name: July
+  month_number: 7
+
+august:
+  month_name: August
+  month_number: 8
+
+september:
+  month_name: September
+  month_number: 9
+
+october:
+  month_name: October
+  month_number: 10
+
+november:
+  month_name: November
+  month_number: 11
+
+december:
+  month_name: December
+  month_number: 12

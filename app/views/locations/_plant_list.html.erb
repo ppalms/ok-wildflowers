@@ -1,0 +1,12 @@
+<%= turbo_frame_tag "plant_list" do %>
+  <ul>
+    <% @location.plants.each do |plant| %>
+      <li class="flex">
+        <span class="grow">
+          <%= plant.common_name %>
+        </span>
+        <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plant_list", turbo_confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

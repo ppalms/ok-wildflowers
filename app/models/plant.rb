@@ -3,7 +3,7 @@ class Plant < ApplicationRecord
 
   has_and_belongs_to_many :bloom_months
 
-  has_many :plantings, dependent: :destroy
+  has_many :plantings, dependent: :delete_all
   has_many :locations, through: :plantings
 
   has_one_attached :photo do |photo|

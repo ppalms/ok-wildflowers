@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "plant_form" do %>
+  <%= form_with url: add_plant_location_path(@location), method: :post, local: true do %>
+    <%= select_tag :plant_id, options_from_collection_for_select(@available_plants, :id, :common_name), prompt: 'Select a Plant' %>
+    <%= submit_tag 'Add Plant' %>
+  <% end %>
+<% end %>
