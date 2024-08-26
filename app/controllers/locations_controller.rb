@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  include LocationsHelper
+
   before_action :set_location, only: %i[show edit update destroy add_plant remove_plant]
 
   # GET /locations or /locations.json
@@ -8,6 +10,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1 or /locations/1.json
   def show
+    @overview = location_overview(@location)
     @plants = @location.plants
     @available_plants = Plant.where.not(id: @plants.pluck(:id))
   end
@@ -64,9 +67,11 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
+        @overview = location_overview(@location)
         @plants = @location.plants
         @available_plants = Plant.where.not(id: @plants.pluck(:id))
         render turbo_stream: [
+          turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
           turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants }),
           turbo_stream.replace("plant_form", partial: "locations/plant_form", locals: { available_plants: @available_plants })
         ]
@@ -81,9 +86,11 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
+        @overview = location_overview(@location)
         @plants = @location.plants
         @available_plants = Plant.where.not(id: @plants.pluck(:id))
         render turbo_stream: [
+          turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
           turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants }),
           turbo_stream.replace("plant_form", partial: "locations/plant_form", locals: { available_plants: @available_plants })
         ]

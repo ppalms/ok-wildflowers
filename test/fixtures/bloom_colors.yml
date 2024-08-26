@@ -1,34 +1,45 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 red:
+  id: 1
   name: Red
 
 orange:
+  id: 2
   name: Orange
 
 yellow:
+  id: 3
   name: Yellow
 
 green:
+  id: 4
   name: Green
 
 blue:
+  id: 5
   name: Blue
 
 indigo:
+  id: 6
   name: Indigo
 
 violet:
+  id: 7
   name: Violet
 
 white:
+  id: 8
   name: White
 
 black:
+  id: 9
   name: Black
 
 brown:
+  id: 10
   name: Brown
 
 pink:
+  id: 11
   name: Pink

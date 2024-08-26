@@ -1,0 +1,16 @@
+indian_blanket_may:
+  plant_id: 1
+  bloom_month_id: 5
+
+indian_blanket_june:
+  plant_id: 1
+  bloom_month_id: 6
+
+indian_blanket_july:
+  plant_id: 1
+  bloom_month_id: 7
+
+indian_blanket_august:
+  plant_id: 1
+  bloom_month_id: 8
+
