@@ -8,10 +8,36 @@
       <strong>Dominant Colors:</strong>
       <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
     </p>
-    <%= line_chart plant_bloom_data(@location),
-      xtitle: "Month",
-      height: "300px"
+    <%= line_chart plant_bloom_lines(@location), 
+      xtitle: "Month", 
+      ytitle: "Plants", 
+      height: "300px", 
+      library: { 
+        scales: { 
+          x: {
+            type: 'category',
+            labels: Date::ABBR_MONTHNAMES.compact,
+            title: { display: true, text: "Bloom Time" }
+          },
+          y: {
+            min: 0,
+            max: @location.plants.count + 1,
+            title: { display: false },
+            ticks: { display: false },
+            grid: { display: false }
+          }
+        },
+        elements: {
+          line: {
+            tension: 0,
+            borderWidth: 5
+          }
+        },
+        legend: {
+          display: true, # Show legend to match plants with lines
+          position: 'right'
+        }
+      } 
     %>
   <% end %>
 </div>
-

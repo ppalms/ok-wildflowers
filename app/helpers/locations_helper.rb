@@ -29,20 +29,28 @@ module LocationsHelper
   # Generates data for chart representing plant bloom times.
   # Results in a line that starts at 0 during months the plant is not blooming
   # and rises to 1 during bloom months.
-  def plant_bloom_data(location)
-    months = Date::ABBR_MONTHNAMES
-    data = []
+  def plant_bloom_lines(location)
+    plant_lines = []
+    months = Date::MONTHNAMES.compact # ["January", "February", ...]
 
-    location.plants.each do |plant|
-      bloom_hash = (1..12).each_with_object({}) do |month_id, hash|
-        hash[months[month_id]] = plant.bloom_months.any? { |bloom_month| bloom_month.id == month_id } ? 1 : 0
+    location.plants.each_with_index do |plant, index|
+      bloom_months = plant.bloom_months.order(:id) # Assuming bloom_months is sorted by month ID
+      next if bloom_months.empty?
+
+      # Create a hash with all months initialized to nil
+      data_points = months.index_with { |_month| nil }
+
+      # Fill in only the bloom months with the correct Y value
+      bloom_months.each do |bloom_month|
+        data_points[Date::MONTHNAMES[bloom_month.id]] = index + 1
       end
 
-      data << { name: plant.common_name, data: bloom_hash }
+      plant_lines << {
+        name: plant.common_name,
+        data: data_points
+      }
     end
 
-    Rails.logger.info "Inspecting plant bloom data: #{data}"
-    data
+    plant_lines
   end
 end
-
