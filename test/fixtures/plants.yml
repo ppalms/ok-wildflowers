@@ -1,26 +1,26 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+indian_blanket:
   id: 1
   common_name: Indian Blanket
   scientific_name: Gaillardia pulchella
 
-two:
+american_basketflower:
   id: 2
   common_name: American Basketflower
   scientific_name: Centaurea americana
 
-three:
+indian_paintbrush:
   id: 3
   common_name: Indian Paintbrush
   scientific_name: Castilleja indivisa
 
-four:
+texas_bluebonnet:
   id: 4
   common_name: Texas Bluebonnet
   scientific_name: Lupinus texensis
 
-five:
+drummond_phlox:
   id: 5
   common_name: Drummond Phlox
   scientific_name: Phlox drummondii

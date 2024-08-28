@@ -14,3 +14,78 @@ indian_blanket_august:
   plant_id: 1
   bloom_month_id: 8
 
+american_basketflower_march:
+  plant_id: 2
+  bloom_month_id: 3
+
+american_basketflower_april:
+  plant_id: 2
+  bloom_month_id: 4
+
+american_basketflower_may:
+  plant_id: 2
+  bloom_month_id: 5
+
+american_basketflower_june:
+  plant_id: 2
+  bloom_month_id: 6
+
+american_basketflower_july:
+  plant_id: 2
+  bloom_month_id: 7
+
+american_basketflower_august:
+  plant_id: 2
+  bloom_month_id: 8
+
+indian_paintbrush_march:
+  plant_id: 3
+  bloom_month_id: 3
+
+indian_paintbrush_april:
+  plant_id: 3
+  bloom_month_id: 4
+
+indian_paintbrush_may:
+  plant_id: 3
+  bloom_month_id: 5
+
+indian_paintbrush_june:
+  plant_id: 3
+  bloom_month_id: 6
+
+indian_paintbrush_july:
+  plant_id: 3
+  bloom_month_id: 7
+
+indian_paintbrush_august:
+  plant_id: 3
+  bloom_month_id: 8
+
+texas_bluebonnet_april:
+  plant_id: 4
+  bloom_month_id: 4
+
+texas_bluebonnet_may:
+  plant_id: 4
+  bloom_month_id: 5
+
+texas_bluebonnet_june:
+  plant_id: 4
+  bloom_month_id: 6
+
+drummond_phlox_march:
+  plant_id: 5
+  bloom_month_id: 3
+
+drummond_phlox_april:
+  plant_id: 5
+  bloom_month_id: 4
+
+drummond_phlox_may:
+  plant_id: 5
+  bloom_month_id: 5
+
+drummond_phlox_june:
+  plant_id: 5
+  bloom_month_id: 6

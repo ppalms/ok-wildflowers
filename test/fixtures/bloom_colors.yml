@@ -20,13 +20,9 @@ blue:
   id: 5
   name: Blue
 
-indigo:
+purple:
   id: 6
-  name: Indigo
-
-violet:
-  id: 7
-  name: Violet
+  name: Purple
 
 white:
   id: 8

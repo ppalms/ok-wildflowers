@@ -6,3 +6,34 @@ indian_blanket_yellow:
   plant_id: 1
   bloom_color_id: 3
 
+indian_paintbrush:
+  plant_id: 3
+  bloom_color_id: 1
+
+texas_bluebonnet:
+  plant_id: 4
+  bloom_color_id: 6
+
+drummond_phlox_white:
+  plant_id: 5
+  bloom_color_id: 8
+
+drummond_phlox_pink:
+  plant_id: 5
+  bloom_color_id: 11
+
+drummond_phlox_red:
+  plant_id: 5
+  bloom_color_id: 1
+
+american_basketflower_pink:
+  plant_id: 2
+  bloom_color_id: 11
+
+american_basketflower_purple:
+  plant_id: 2
+  bloom_color_id: 6
+
+american_basketflower_white:
+  plant_id: 2
+  bloom_color_id: 8
