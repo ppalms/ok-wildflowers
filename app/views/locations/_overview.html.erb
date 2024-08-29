@@ -13,21 +13,16 @@
         <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
           <div class="py-1 sm:font-semibold text-center text-white text-xs sm:text-base uppercase bg-stone-600 border-b-2 border-stone-400"><%= month %></div>
         <% end %>
-        <% plants_by_start_month = @location.plants.includes(:bloom_months).sort_by { |plant| [plant.bloom_months.minimum(:id), plant.common_name] } %>
-        <% plants_by_start_month.each do |plant| %>
-          <% bloom_months = plant.bloom_months.order(:id) %>
-          <% next if bloom_months.empty? %>
-          <% start_month = bloom_months.first.id %>
-          <% end_month = bloom_months.last.id %>
-          <% span = end_month - start_month + 1 %>
-          <% (start_month - 1).times do |i| %>
+        <% @plants_with_bloom_periods.each do |plant_info| %>
+          <% (plant_info[:start_month] - 1).times do |i| %>
             <div class="<%= i == 0 ? 'border-r' : 'border-x' %>"></div>
           <% end %>
-          <div class="col-span-<%= span %> bg-stone-300 rounded-xl h-8 border-b-2 sm:border-b-4 my-0.5 sm:my-1 border-stone-400 flex items-center justify-center text-stone-800 text-sm sm:text-base sm:font-medium font-medium">
-            <%= plant.common_name %>
+          <% span = plant_info[:span] %>
+          <div style="grid-column: span <%= span %> / span <%= span %>;" class="bg-stone-300 rounded-xl h-8 border-b-2 sm:border-b-4 my-0.5 sm:my-1 border-stone-400 flex items-center justify-center text-stone-800 text-sm sm:text-base sm:font-medium font-medium">
+            <%= plant_info[:plant].common_name %>
           </div>
-          <% (12 - end_month).times do |i| %>
-            <div class="<%= i == (11 - end_month) ? 'border-l' : 'border-x' %>"></div>
+          <% (12 - plant_info[:end_month]).times do |i| %>
+            <div class="<%= i == (11 - plant_info[:end_month]) ? 'border-l' : 'border-x' %>"></div>
           <% end %>
         <% end %>
       </div>
