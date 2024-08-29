@@ -8,36 +8,29 @@
       <strong>Dominant Colors:</strong>
       <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
     </p>
-    <%= line_chart plant_bloom_lines(@location), 
-      xtitle: "Month", 
-      ytitle: "Plants", 
-      height: "300px", 
-      library: { 
-        scales: { 
-          x: {
-            type: 'category',
-            labels: Date::ABBR_MONTHNAMES.compact,
-            title: { display: true, text: "Bloom Time" }
-          },
-          y: {
-            min: 0,
-            max: @location.plants.count + 1,
-            title: { display: false },
-            ticks: { display: false },
-            grid: { display: false }
-          }
-        },
-        elements: {
-          line: {
-            tension: 0,
-            borderWidth: 5
-          }
-        },
-        legend: {
-          display: true, # Show legend to match plants with lines
-          position: 'right'
-        }
-      } 
-    %>
+    <div class="overflow-x-auto my-4">
+      <div class="grid grid-cols-12 min-w-[700px] border border-stone-800 rounded shadow">
+        <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
+          <div class="py-1 sm:font-semibold text-center text-white text-xs sm:text-base uppercase bg-stone-600 border-b-2 border-stone-400"><%= month %></div>
+        <% end %>
+        <% plants_by_start_month = @location.plants.includes(:bloom_months).sort_by { |plant| [plant.bloom_months.minimum(:id), plant.common_name] } %>
+        <% plants_by_start_month.each do |plant| %>
+          <% bloom_months = plant.bloom_months.order(:id) %>
+          <% next if bloom_months.empty? %>
+          <% start_month = bloom_months.first.id %>
+          <% end_month = bloom_months.last.id %>
+          <% span = end_month - start_month + 1 %>
+          <% (start_month - 1).times do |i| %>
+            <div class="<%= i == 0 ? 'border-r' : 'border-x' %>"></div>
+          <% end %>
+          <div class="col-span-<%= span %> bg-green-600 rounded-xl h-8 border-y-2 border-white flex items-center justify-center text-white text-sm sm:text-base sm:font-medium font-medium">
+            <%= plant.common_name %>
+          </div>
+          <% (12 - end_month).times do |i| %>
+            <div class="<%= i == (11 - end_month) ? 'border-l' : 'border-x' %>"></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "plant_list" do %>
   <ul>
-    <% @location.plants.each do |plant| %>
+    <% @location.plants.order(:common_name).each do |plant| %>
       <li class="flex">
         <span class="grow">
           <%= plant.common_name %>
