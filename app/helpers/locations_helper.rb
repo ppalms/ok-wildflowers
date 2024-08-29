@@ -2,7 +2,8 @@ module LocationsHelper
   def location_overview(location)
     {
       peak_bloom_months: peak_bloom_months_for(location),
-      dominant_bloom_colors: dominant_bloom_colors_for(location)
+      dominant_bloom_colors: dominant_bloom_colors_for(location),
+      plants_with_bloom_periods: plants_with_bloom_periods(location)
     }
   end
 
@@ -24,5 +25,26 @@ module LocationsHelper
               .order('COUNT(plants.id) DESC, bloom_colors.name')
               .limit(count)
               .pluck('bloom_colors.name')
+  end
+
+  def plants_with_bloom_periods(location)
+    plants = location.plants
+                     .includes(:bloom_months)
+                     .sort_by { |plant| [plant.bloom_months.minimum(:id), plant.common_name] }
+
+    plants.map do |plant|
+      bloom_months = plant.bloom_months.order(:id)
+      next if bloom_months.empty?
+
+      start_month = bloom_months.first.id
+      end_month = bloom_months.last.id
+
+      {
+        common_name: plant.common_name,
+        bloom_months: end_month - start_month + 1,
+        pre_bloom_months: start_month - 1,
+        post_bloom_months: 12 - end_month
+      }
+    end
   end
 end

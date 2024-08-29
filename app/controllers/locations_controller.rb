@@ -11,24 +11,6 @@ class LocationsController < ApplicationController
   # GET /locations/1 or /locations/1.json
   def show
     @overview = location_overview(@location)
-    @plants_with_bloom_periods = @location.plants
-                                          .includes(:bloom_months)
-                                          .sort_by { |plant| [plant.bloom_months.minimum(:id), plant.common_name] }
-                                          .map do |plant|
-      bloom_months = plant.bloom_months.order(:id)
-      next if bloom_months.empty?
-
-      start_month = bloom_months.first.id
-      end_month = bloom_months.last.id
-      span = end_month - start_month + 1
-
-      {
-        plant:,
-        start_month:,
-        end_month:,
-        span:
-      }
-    end
     @plants = @location.plants
     @available_plants = Plant.where.not(id: @plants.pluck(:id))
   end
