@@ -1,0 +1,53 @@
+<%= turbo_frame_tag "search_modal" do %>
+  <div class="p-6 bg-stone-50 border-b border-stone-200">
+    <div class="flex justify-between">
+      <h2>Add Plants</h2>
+      <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal()">&times;</button>
+    </div>
+    <div class="text-lg font-bold text-stone-700"><%= @location.name %></div>
+    <%= form_with url: search_plants_location_path, method: :get, id: 'plant_search_form' do |form| %>
+      <div class="sm:flex sm:items-center my-2">
+        <%= form.text_field :name, value: params[:name], placeholder: "Search by common or scientific name", class: "text-field mb-2 sm:mb-0 sm:mr-2 text-sm" %>
+        <div class="flex gap-2">
+          <%= form.submit "Search", class: "btn-primary h-12 py-2 w-1/2 sm:w-auto" %>
+          <%= link_to "Reset", search_plants_location_path, class: "btn-secondary text-center w-1/2 sm:w-auto" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div id="plant_search_results" class="bg-white">
+    <% if @plants.empty? %>
+      <p class="text-center">No plants found.</p>
+    <% else %>
+      <% @plants.each do |plant| %>
+        <div class="flex items-center gap-1 h-20 p-2 border-b">
+          <div class="w-16 md:w-28 px-2">
+            <% if plant.photo.attached? %>
+              <%= image_tag plant.photo.variant(:thumb), class: "rounded border max-h-16" %>
+            <% end %>
+          </div>
+          <div class="grow">
+            <p class="font-bold sm:text-lg"><%= plant.common_name %></p>
+            <p class="text-sm sm:text-base"><%= plant.scientific_name %></p>
+          </div>
+          <% if @location.plants.include?(plant) %>
+            <div class="pr-2 text-right">
+              <button class="btn-secondary bg-gray-100 hover:bg-gray-100 border border-gray-200 hover:border-gray-200 h-10 px-4 py-2 text-sm" disabled>
+                Added
+              </button>
+            </div>
+          <% else %>
+            <%= turbo_frame_tag "plant_#{plant.id}_add_button" do %>
+              <div class="pr-2 text-right">
+                <%= form_with url: add_plant_location_path(@location), method: :post, data: { turbo_frame: "plant_#{plant.id}_add_button" } do |form| %>
+                  <%= form.hidden_field :plant_id, value: plant.id %>
+                  <%= form.submit "Add", class: "btn-primary h-10 px-4 py-2 text-sm" %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

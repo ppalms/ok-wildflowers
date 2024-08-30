@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :locations, only: [:show] do
     member do
+      get 'search_plants'
       post 'add_plant'
       delete 'remove_plant'
     end

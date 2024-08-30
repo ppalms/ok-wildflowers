@@ -30,12 +30,11 @@ module LocationsHelper
   def plants_with_bloom_periods(location)
     plants = location.plants
                      .includes(:bloom_months)
+                     .reject { |plant| plant.bloom_months.empty? }
                      .sort_by { |plant| [plant.bloom_months.minimum(:id), plant.common_name] }
 
     plants.map do |plant|
       bloom_months = plant.bloom_months.order(:id)
-      next if bloom_months.empty?
-
       start_month = bloom_months.first.id
       end_month = bloom_months.last.id
 

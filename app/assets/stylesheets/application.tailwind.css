@@ -12,15 +12,15 @@
   }
 
   .btn-primary {
-    @apply rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer shadow-sm border border-b-4 border-blue-900 hover:bg-blue-500 transition;
+    @apply rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-500 border border-b-4 border-blue-900 transition text-white font-medium shadow-sm cursor-pointer;
   }
 
   .btn-secondary {
-    @apply rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium;
+    @apply rounded-lg py-3 px-5 bg-gray-100 hover:bg-gray-200 border border-gray-200 hover:border-gray-300 inline-block font-medium;
   }
 
   .btn-danger {
-    @apply rounded-lg py-3 px-5 bg-red-100 inline-block font-medium;
+    @apply rounded-lg py-3 px-5 bg-red-100 hover:bg-red-200 border border-red-200 hover:border-red-300 transition inline-block font-medium;
   }
 
   .text-field {

@@ -1,4 +1,8 @@
 <div class="w-full">
+  <div id="search_modal_wrapper" class="absolute -top-8 left-0 w-full rounded shadow-lg hidden">
+    <%= turbo_frame_tag "search_modal" do %>
+    <% end %>
+  </div>
   <%= link_to sanitize("&larr; Back to locations"), locations_path, class: "font-medium py-3" %>
   <% if notice.present? %>
     <p class="notice" id="notice"><%= notice %></p>
@@ -6,22 +10,29 @@
   <%= turbo_frame_tag @location do %>
     <div class="flex justify-between items-center mt-6">
       <h1><%= @location.name %></h1>
-      <%= link_to "Edit", edit_location_path(@location), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
     </div>
   <% end %>
   <div class="my-2">
     <%= render partial: "overview" %>
   </div>
-  <div class="my-2"> 
-    <h2>Plants</h2>
+  <div class="my-2">
+    <div class="flex items-center justify-between pb-4">
+      <h2>Plants</h2>
+      <%= link_to "Add Plants", search_plants_location_path(@location), data: { turbo_frame: "search_modal" }, class: "btn-primary", onclick: "showModal()" %>
+    </div>
     <%= render partial: "plant_list" %>
   </div>
-  <div class="my-2">
-    <h2>Add a Plant</h2>
-    <%= render partial: "plant_form" %>
-  </div>
-  <div class="inline-block">
-    <%= button_to "Destroy this location", @location, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
+  <div class="mt-6 text-center">
+    <%= button_to "Delete this location", @location, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
 </div>
+<script>
+  function showModal() {
+    document.getElementById('search_modal_wrapper').classList.remove('hidden');
+  }
 
+  function hideModal() {
+    document.getElementById('search_modal_wrapper').classList.add('hidden');
+  }
+</script>
