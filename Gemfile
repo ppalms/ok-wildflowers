@@ -77,5 +77,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "chartkick", "~> 5.1"
+# Supports user registration and login
+gem "devise", "~> 4.8.1"
 

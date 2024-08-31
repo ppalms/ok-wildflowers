@@ -2,11 +2,10 @@ class Plant < ApplicationRecord
   validates :common_name, presence: true
 
   has_and_belongs_to_many :bloom_colors
-
   has_and_belongs_to_many :bloom_months
-
   has_many :plantings, dependent: :delete_all
   has_many :locations, through: :plantings
+  belongs_to :organization
 
   has_one_attached :photo do |photo|
     photo.variant :thumb, resize_to_limit: [100, 100], preprocessed: true

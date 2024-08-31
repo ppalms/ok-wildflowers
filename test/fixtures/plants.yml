@@ -4,44 +4,53 @@ indian_blanket:
   id: 1
   common_name: Indian Blanket
   scientific_name: Gaillardia pulchella
+  organization: garden_hq
 
 american_basketflower:
   id: 2
   common_name: American Basketflower
   scientific_name: Centaurea americana
+  organization: garden_hq
 
 indian_paintbrush:
   id: 3
   common_name: Indian Paintbrush
   scientific_name: Castilleja indivisa
+  organization: garden_hq
 
 texas_bluebonnet:
   id: 4
   common_name: Texas Bluebonnet
   scientific_name: Lupinus texensis
+  organization: garden_hq
 
 drummond_phlox:
   id: 5
   common_name: Drummond Phlox
   scientific_name: Phlox drummondii
+  organization: garden_hq
 
 rough_blazing_star:
   id: 6
   common_name: Rough Blazing Star
   scientific_name: Liatris aspera
+  organization: garden_hq
 
 black_eyed_susan:
   id: 7
   common_name: Black-Eyed Susan
   scientific_name: Rudbeckia hirta
+  organization: garden_hq
 
 partridge_pea:
   id: 8
   common_name: Partridge Pea
   scientific_name: Chamaecrista fasciculata
+  organization: garden_hq
 
 tall_poppymallow:
   id: 9
   common_name: Tall Poppymallow
   scientific_name: Callirhoe leiocarpa
+  organization: garden_hq
 

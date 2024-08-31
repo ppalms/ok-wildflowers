@@ -3,8 +3,10 @@
 front:
   id: 1
   name: Front Yard
+  organization: garden_hq
 
 back:
   id: 2
   name: Back Yard
+  organization: garden_hq
 

@@ -1,0 +1,8 @@
+admin:
+  email: admin@ppalmer.dev
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+gardener:
+  email: gardener@ppalmer.dev
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
