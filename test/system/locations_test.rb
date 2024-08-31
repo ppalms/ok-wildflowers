@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class LocationsTest < ApplicationSystemTestCase
   setup do
-    @location = locations(:one)
+    @location = locations(:front)
   end
 
   test "visiting the index" do
@@ -32,12 +32,12 @@ class LocationsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "should destroy Location" do
+  test "should delete Location" do
     visit location_url(@location)
-    click_on "Destroy this location", match: :first
+    click_on "Delete this location", match: :first
 
     accept_confirm
 
-    assert_text "Location was successfully destroyed"
+    assert_text "Location was successfully deleted"
   end
 end

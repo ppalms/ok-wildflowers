@@ -8,10 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-%w[Red Orange Yellow Green Blue Indigo Violet White Black Brown Pink].each do |color_name|
-  BloomColor.find_or_create_by!(name: color_name)
-end
-
 (1..12).each do |month_number|
   BloomMonth.find_or_create_by!(month_name: Date::ABBR_MONTHNAMES[month_number], month_number: month_number)
 end
+
+puts "\n== Seeding the database with fixtures =="
+system("bin/rails db:fixtures:load")
+

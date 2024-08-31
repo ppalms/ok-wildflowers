@@ -7,7 +7,7 @@
     <%= link_to "Edit this plant", edit_plant_path(@plant), class: "btn-secondary" %>
     <%= link_to "Back to plants", plants_path, class: "btn-secondary" %>
     <div class="inline-block">
-      <%= button_to "Destroy this plant", @plant, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <%= button_to "Delete this plant", @plant, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
   </div>
 </div>

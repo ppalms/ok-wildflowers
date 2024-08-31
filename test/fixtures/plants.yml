@@ -24,3 +24,24 @@ drummond_phlox:
   id: 5
   common_name: Drummond Phlox
   scientific_name: Phlox drummondii
+
+rough_blazing_star:
+  id: 6
+  common_name: Rough Blazing Star
+  scientific_name: Liatris aspera
+
+black_eyed_susan:
+  id: 7
+  common_name: Black-Eyed Susan
+  scientific_name: Rudbeckia hirta
+
+partridge_pea:
+  id: 8
+  common_name: Partridge Pea
+  scientific_name: Chamaecrista fasciculata
+
+tall_poppymallow:
+  id: 9
+  common_name: Tall Poppymallow
+  scientific_name: Callirhoe leiocarpa
+
