@@ -12,6 +12,5 @@
   BloomMonth.find_or_create_by!(month_name: Date::ABBR_MONTHNAMES[month_number], month_number: month_number)
 end
 
-puts "\n== Seeding the database with fixtures =="
+Rails.logger.debug "\n== Seeding the database with fixtures =="
 system("bin/rails db:fixtures:load")
-
