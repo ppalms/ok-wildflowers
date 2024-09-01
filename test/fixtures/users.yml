@@ -1,8 +1,14 @@
 admin:
+  organization: garden_hq
   email: admin@ppalmer.dev
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 gardener:
+  organization: garden_hq
   email: gardener@ppalmer.dev
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
+botanist:
+  organization: oxley
+  email: botanist@oxley.org
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

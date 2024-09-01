@@ -26,3 +26,9 @@ Things you may want to cover:
 - Deployment instructions
 
 - ...
+
+## Dev playbook
+
+- Want to nuke local dev db but "being accessed by other users"
+  1. ps -ef | grep postgres
+  2. sudo kill -9 <postgresid>

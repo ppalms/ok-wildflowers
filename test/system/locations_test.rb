@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class LocationsTest < ApplicationSystemTestCase
   setup do
+    login_as users(:gardener)
     @location = locations(:front)
   end
 

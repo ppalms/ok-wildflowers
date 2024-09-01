@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class PlantsTest < ApplicationSystemTestCase
   setup do
+    login_as users(:gardener)
     @plant = plants(:indian_blanket)
   end
 
