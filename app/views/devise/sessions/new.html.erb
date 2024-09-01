@@ -1,6 +1,7 @@
-<div class="max-w-lg mx-auto">
+<div class="max-w-lg mx-auto pt-12">
   <h2>Sign in</h2>
   <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), class: "flex flex-col gap-y-2 mt-4", data: { turbo: false }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
@@ -16,8 +17,8 @@
       </div>
     <% end %>
     <div class="actions">
-      <%= f.submit "Log in", class: "btn-primary" %>
+      <%= f.submit "Sign in", class: "btn-primary" %>
     </div>
   <% end %>
+  <%= render "devise/shared/links" %>
 </div>
-<%# TODO: render devise/shared/links when registration and forgot password flows are done %>
