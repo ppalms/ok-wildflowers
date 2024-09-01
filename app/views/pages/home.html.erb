@@ -1,10 +1,12 @@
 <div class="container">
+  <% if notice.present? %>
+    <p class="notice" id="notice"><%= notice %></p>
+  <% end %>
   <h1>GardenHQ</h1>
   <p>Handle your yard situation</p>
-
   <% if user_signed_in? %>
-    <%= link_to "View locations", quotes_path, class: "btn btn--dark" %>
+    <%= link_to "View locations", locations_path, class: "btn-secondary" %>
   <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn-secondary" %>
   <% end %>
 </div>

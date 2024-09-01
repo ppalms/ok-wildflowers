@@ -1,0 +1,31 @@
+<div class="w-full border-b border-b-stone-300 shadow">
+  <nav class="container mx-auto">
+    <% if user_signed_in? %>
+      <div class="w-full text-center font-bold p-2">
+        <%= link_to "GardenHQ", root_path %>
+      </div>
+      <div class="flex justify-between items-center w-full px-2">
+        <div class="flex gap-2 items-center">
+          <%= link_to locations_path do %>
+            <div class="flex items-center h-10 p-2 <%= "border-b-2 border-blue-700" if request.path.start_with?(locations_path) %>">Locations</div>
+          <% end %>
+          <%= link_to plants_path do %>
+            <div class="flex items-center h-10 p-2 <%= "border-b-2 border-blue-700" if request.path.start_with?(plants_path) %>">Plants</div>
+          <% end %>
+        </div>
+        <div>
+          <%= button_to sanitize("Sign out &rarr;"), destroy_user_session_path, method: :delete, class: "text-sm hover:font-semibold" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex justify-between items-center w-full p-2">
+        <div class="font-bold pl-2">
+          GardenHQ
+        </div>
+        <div>
+          <%= link_to "Sign in", new_user_session_path, class: "btn-secondary h-8 px-2 py-1 text-sm" %>
+        </div>
+      </div>
+    <% end %>
+  </nav>
+</div>

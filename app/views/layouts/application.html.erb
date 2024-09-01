@@ -10,37 +10,10 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <nav>
-      <ul class="flex justify-center bg-gray-100 py-5">
-        <li class="m-2">
-          <%= link_to "Home", root_path, class: "font-medium" %>
-        </li>
-        <li class="m-2">
-          <%= link_to "Locations", locations_path, class: "font-medium" %>
-        </li>
-        <li class="m-2">
-          <%= link_to "Plants", plants_path, class: "font-medium" %>
-        </li>
-      </ul>
-
-      <% if user_signed_in? %>
-    <div class="font-bold">
-      Company name
-    </div>
-    <div>
-      Current user name
-    </div>
-     <%= button_to "Sign out",
-                  destroy_user_session_path,
-                  method: :delete,
-                  class: "btn-secondary" %>
-  <% else %>
-    <%= link_to "Sign in",
-                new_user_session_path,
-                class: "btn-primary" %>
-  <% end %>
-    </nav>
-    <main class="container mx-auto mt-10 px-5 flex relative">
+    <header>
+      <%= render "layouts/navbar" %>
+    </header>
+    <main class="container mx-auto p-5 relative">
       <%= yield %>
     </main>
   </body>
