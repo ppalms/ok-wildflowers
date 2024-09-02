@@ -10,9 +10,9 @@ servers:
     hosts:
       - 143.244.173.20
     labels:
-      traefik.http.routers.garden.entrypoints: websecure
-      traefik.http.routers.garden.rule: Host(`garden.ppalmer.dev`)
-      traefik.http.routers.garden.tls.certresolver: letsencrypt
+      traefik.http.routers.gardenerd.entrypoints: websecure
+      traefik.http.routers.gardenerd.rule: Host(`gardenerd.ppalmer.dev`)
+      traefik.http.routers.gardenerd.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
 registry:
