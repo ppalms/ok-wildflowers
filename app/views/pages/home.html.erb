@@ -1,12 +1,19 @@
-<div class="container">
+<div class="container text-center">
   <% if notice.present? %>
     <p class="notice" id="notice"><%= notice %></p>
   <% end %>
-  <h1>GardenHQ</h1>
-  <p>Handle your yard situation</p>
+  <h1 class="px-6 pt-12 pb-4 sm:text-5xl">Welcome</h1>
+  <div class="p-6 text-left max-w-sm mx-auto">
+    <ul class="text-lg text-stone-500 space-y-2">
+      <li>🌻 Organize your yard or garden</li>
+      <li>🌻 Catalog your plants</li>
+    </ul>
+  </div>
   <% if user_signed_in? %>
-    <%= link_to "View locations", locations_path, class: "btn-secondary" %>
+    <%= link_to "Get started", locations_path, class: "btn-secondary mt-4" %>
   <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn-secondary" %>
+    <%= link_to new_user_session_path do %>
+      <button class="btn-primary mt-4">Sign in</button>
+    <% end %>
   <% end %>
 </div>
