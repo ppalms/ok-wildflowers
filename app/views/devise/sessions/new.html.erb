@@ -1,6 +1,6 @@
 <div class="max-w-md mx-auto pt-12">
   <h2>Sign in</h2>
-  <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), class: "flex flex-col gap-y-2 mt-4", data: { turbo: false }) do |f| %>
+  <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), class: "flex flex-col gap-y-4 mt-4", data: { turbo: false }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
       <%= f.label :email %><br />
