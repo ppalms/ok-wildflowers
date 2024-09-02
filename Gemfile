@@ -77,6 +77,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-# Supports user registration and login
+# Flexible authentication solution for Rails with Warden https://github.com/heartcombo/devise
 gem "devise", "~> 4.8.1"
-

@@ -1,8 +1,6 @@
 # README
 
-[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
-
-[![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
+[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails) [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -29,6 +27,10 @@ Things you may want to cover:
 
 ## Dev playbook
 
-- Want to nuke local dev db but "being accessed by other users"
+- Need to nuke local dev db but "being accessed by other users" due to zombie process
+
   1. ps -ef | grep postgres
   2. sudo kill -9 <postgresid>
+
+- Run in production mode (e.g., to test custom error pages)
+  - `bin/rails s -e production`
