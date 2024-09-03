@@ -12,5 +12,8 @@
   BloomMonth.find_or_create_by!(month_name: Date::ABBR_MONTHNAMES[month_number], month_number: month_number)
 end
 
-Rails.logger.debug "\n== Seeding the database with fixtures =="
-system("bin/rails db:fixtures:load")
+%w[Red Orange Yellow Green Blue Purple White Black Brown Pink].each do |color_name|
+  BloomColor.find_or_create_by!(name: color_name)
+end
+
+Organization.find_or_create_by(name: 'Gardenerd')

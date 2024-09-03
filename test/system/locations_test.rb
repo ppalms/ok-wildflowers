@@ -3,7 +3,7 @@ require "application_system_test_case"
 class LocationsTest < ApplicationSystemTestCase
   setup do
     login_as users(:gardener)
-    @location = locations(:front)
+    @location = locations(:front_yard)
   end
 
   test "visiting the index" do
@@ -26,10 +26,10 @@ class LocationsTest < ApplicationSystemTestCase
     visit location_url(@location)
     click_on "Edit", match: :first
 
-    fill_in "Name", with: @location.name
+    fill_in "Name", with: "New Location Name"
     click_on "Update Location"
 
-    # assert_text "Location was successfully updated"
+    assert_text "New Location Name"
     click_on "Back"
   end
 

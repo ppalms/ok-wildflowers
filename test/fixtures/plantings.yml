@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-front_indian_blanket:
+front_yard_indian_blanket:
   location_id: 1
   plant_id: 1
 
-front_basket_flower:
+front_yard_basket_flower:
   location_id: 1
   plant_id: 2

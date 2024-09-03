@@ -1,12 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-front:
+front_yard:
   id: 1
   name: Front Yard
   organization: garden_hq
 
-back:
+back_yard:
   id: 2
   name: Back Yard
   organization: garden_hq
-
