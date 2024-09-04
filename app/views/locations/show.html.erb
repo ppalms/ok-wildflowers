@@ -3,7 +3,7 @@
     <%= turbo_frame_tag "search_modal" do %>
     <% end %>
   </div>
-  <%= link_to sanitize("&larr; Back to locations"), locations_path, class: "font-medium py-3" %>
+  <%= link_to sanitize("&larr; Browse locations"), locations_path, class: "font-medium py-3" %>
   <% if notice.present? %>
     <p class="notice" id="notice"><%= notice %></p>
   <% end %>
