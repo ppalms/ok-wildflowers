@@ -1,21 +1,11 @@
 <%= form_with(model: location, class: "contents") do |form| %>
   <% if location.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
-      <ul>
-        <% location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render partial: "layouts/error_messages", locals: { errors: location.errors } %>
   <% end %>
-
   <div class="my-5">
     <%= form.label :name %>
     <%= form.text_field :name, class: "text-field", autofocus: true %>
   </div>
-
   <div class="inline">
     <%= form.submit class: "btn-primary" %>
   </div>

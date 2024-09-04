@@ -1,0 +1,8 @@
+<div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 rounded-lg mt-3">
+  <p class="font-bold">Unable to save due to the following <%= pluralize(errors.count, "error") %>:</p>
+  <ul class="font-medium">
+    <% errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
