@@ -1,9 +1,11 @@
 <div class="w-full">
-  <div class="font-medium mb-6">
+  <div class="mb-6">
     <%= link_to sanitize("&larr; Browse locations"), locations_path %>
   </div>
   <% if notice.present? %>
-    <p class="notice -mt-6" id="notice"><%= notice %></p>
+    <div class="flex justify-center">
+      <p class="notice" id="notice"><%= notice %></p>
+    </div>
   <% end %>
   <div class="mt-6">
     <h1>New location</h1>

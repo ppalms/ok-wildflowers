@@ -1,7 +1,9 @@
 <% content_for :title, "Locations" %>
 <div class="w-full">
   <% if notice.present? %>
-    <p class="notice" id="notice"><%= notice %></p>
+    <div class="flex justify-center">
+      <p class="notice" id="notice"><%= notice %></p>
+    </div>
   <% end %>
   <div class="flex justify-between items-center py-4">
     <h1>Locations</h1>
