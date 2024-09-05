@@ -16,8 +16,8 @@
     <% else %>
       <% @plants.each do |plant| %>
         <%= link_to plant do %>
-          <div class="flex gap-2 h-24 p-2 -mx-2 rounded hover:cursor-pointer hover:bg-cyan-50 hover:outline hover:outline-1 hover:outline-cyan-100 hover:transition duration-300">
-            <div class="w-20 md:w-28">
+          <div class="flex gap-2 p-2 min-h-24 rounded hover:cursor-pointer hover:bg-cyan-50 hover:outline hover:outline-1 hover:outline-cyan-100 hover:transition duration-300">
+            <div class="min-w-20">
               <% if plant.photo.attached? %>
                 <%= image_tag plant.photo.variant(:thumb), class: "rounded border max-h-20" %>
               <% end %>

@@ -8,7 +8,7 @@ class Plant < ApplicationRecord
   belongs_to :organization
 
   has_one_attached :photo do |photo|
-    photo.variant :thumb, resize_to_limit: [100, 100], preprocessed: true
+    photo.variant :thumb, resize_to_fill: [100, 100], preprocessed: true
   end
 
   # Provides a comma-separated list of other common names for display in the UI

@@ -1,12 +1,25 @@
 <%= turbo_frame_tag "plant_list" do %>
-  <ul>
-    <% @location.plants.order(:common_name).each do |plant| %>
-      <li class="flex">
-        <span class="grow">
-          <%= plant.common_name %>
-        </span>
-        <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plant_list", turbo_confirm: "Are you sure?" } %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="space-y-0.5 max-w-xl xl:max-w-4xl mx-auto text-sm font-medium">
+    <div class="flex items-center justify-between pb-4">
+      <h2>Plants</h2>
+      <%= link_to "Add Plants", search_plants_location_path(@location), data: { turbo_frame: "search_modal" }, class: "btn-primary", onclick: "showModal()" %>
+    </div>
+    <ul>
+      <% @location.plants.order(:common_name).each do |plant| %>
+        <li class="flex items-center min-h-16 p-2 border border-stone-200 rounded">
+          <% if plant.photo.attached? %>
+            <div class="rounded-full w-10 h-10 mr-2 overflow-hidden">
+              <%= image_tag plant.photo.variant(:thumb) %>
+            </div>
+          <% end %>
+          <span class="grow">
+            <%= plant.common_name %>
+          </span>
+          <div class="text-red-800">
+            <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plant_list", turbo_confirm: "Are you sure?" } %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
