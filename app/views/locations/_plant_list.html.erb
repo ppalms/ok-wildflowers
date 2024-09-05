@@ -4,13 +4,15 @@
       <h2>Plants</h2>
       <%= link_to "Add Plants", search_plants_location_path(@location), data: { turbo_frame: "search_modal" }, class: "btn-primary", onclick: "showModal()" %>
     </div>
-    <ul>
+    <ul class="space-y-0.5">
       <% @location.plants.order(:common_name).each do |plant| %>
         <li class="flex items-center min-h-16 p-2 border border-stone-200 rounded">
           <% if plant.photo.attached? %>
-            <div class="rounded-full w-10 h-10 mr-2 overflow-hidden">
+            <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200 overflow-hidden">
               <%= image_tag plant.photo.variant(:thumb) %>
             </div>
+          <% else %>
+            <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200"></div>
           <% end %>
           <span class="grow">
             <%= plant.common_name %>
