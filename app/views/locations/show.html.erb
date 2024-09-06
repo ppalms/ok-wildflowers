@@ -1,15 +1,11 @@
 <div class="w-full">
   <div id="modal_backdrop" class="absolute top-0 left-0 w-full h-full backdrop-blur-lg hidden transition">
   </div>
-  <div id="search_modal_wrapper" class="absolute top-0 left-0 w-full h-full hidden">
-    <%# TODO: rename "search_modal_wrapper" to "search_modal" %>
-    <%# TODO: rename "search_modal" to "search_plants" %>
-    <%= turbo_frame_tag "search_modal", loading: "lazy" do %>
-      <div class="loading-spinner">Loading...</div>
-    <% end %>
+  <div id="search_plants_modal" class="absolute top-0 left-0 w-full h-full hidden">
+    <%= turbo_frame_tag "search_plants", loading: "lazy" %>
   </div>
-  <div id="plant_summary_modal_wrapper" class="absolute top-0 left-0 w-full h-full hidden">
-    <%= turbo_frame_tag "plant_summary_modal" %>
+  <div id="plant_summary_modal" class="absolute top-0 left-0 w-full h-full hidden">
+    <%= turbo_frame_tag "plant_summary", loading: "lazy" %>
   </div>
   <div class="mb-6">
     <%= link_to sanitize("&larr; Browse locations"), locations_path %>
@@ -36,12 +32,12 @@
   </div>
 </div>
 <script>
-  function showModal(modal_id) {
+  function show(modal_id) {
     document.getElementById(modal_id).classList.remove('hidden');
     document.getElementById('modal_backdrop').classList.remove('hidden');
   }
 
-  function hideModal(modal_id) {
+  function hide(modal_id) {
     document.getElementById('modal_backdrop').classList.add('hidden');
     document.getElementById(modal_id).classList.add('hidden');
   }
