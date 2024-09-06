@@ -7,7 +7,7 @@
         </span>
       </button>
     </div>
-    <div class="absolute left-1/2 transform -translate-x-1/2 font-bold">
+    <div class="absolute left-1/2 -translate-x-1/2 font-bold">
       <% if user_signed_in? %>
         <span>
           <%= link_to current_organization.name, root_path %>
@@ -19,7 +19,7 @@
       <% end %>
     </div>
   </div>
-  <div id="nav_menu" class="absolute hidden w-full pl-2 bg-white border-b border-b-stone-300 shadow z-50">
+  <div id="nav_menu" class="absolute hidden w-full pl-2 bg-white border-b border-b-stone-300 z-50">
     <% if user_signed_in? %>
       <div class="p-2">
         <%= link_to "Locations", locations_path %>
@@ -44,4 +44,12 @@
     hamburger.classList.toggle('is-active');
     nav.classList.toggle('hidden');
   }
+
+  // Close nav menu on navigation to new page
+  document.addEventListener('turbo:visit', function() {
+    const nav = document.querySelector('#nav_menu');
+    const hamburger = document.querySelector('.hamburger');
+    nav.classList.add('hidden');
+    hamburger.classList.remove('is-active');
+  });
 </script>
