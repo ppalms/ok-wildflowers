@@ -1,15 +1,10 @@
 <%= turbo_frame_tag "search_modal" do %>
-  <div class="border-t border-stone-300 sm:border sm:rounded sm:max-w-screen-lg sm:mx-auto">
-    <div class="px-4 py-2 bg-stone-50 border-b border-stone-200 touch-pan-y sticky top-0 sm:rounded">
-      <div class="flex items-center justify-between">
-        <div class="text-lg font-bold text-stone-700">Plant Details</div>
+  <div class="relative w-full h-full">
+    <div class="sticky top-0 p-4 bg-white border-y border-stone-300">
+      <div class="absolute top-4 right-4">
         <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal()">&times;</button>
       </div>
-    </div>
-    <div class="p-4 bg-white rounded-b">
       <%= render @plant %>
     </div>
-    <%# TODO: nav to plant %>
   </div>
-</div>
 <% end %>
