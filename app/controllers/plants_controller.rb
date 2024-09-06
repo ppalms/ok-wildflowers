@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: %i[ show edit update destroy ]
+  before_action :set_plant, only: %i[ show show_summary edit update destroy ]
 
   # GET /plants or /plants.json
   def index
@@ -10,6 +10,13 @@ class PlantsController < ApplicationController
 
   # GET /plants/1 or /plants/1.json
   def show
+  end
+
+  # GET /plants/1/summary
+  def show_summary
+    respond_to do |format|
+      format.html { render partial: "plants/plant_summary", locals: { plant: @plant } }
+    end
   end
 
   # GET /plants/new

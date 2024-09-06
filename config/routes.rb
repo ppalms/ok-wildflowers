@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :plants
+  get 'plants/:id/summary', to: 'plants#show_summary', as: 'plant_summary'
 
   get "locations" => "locations#index"
   resources :locations

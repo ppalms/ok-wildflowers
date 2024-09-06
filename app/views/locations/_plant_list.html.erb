@@ -2,21 +2,25 @@
   <div class="space-y-0.5 max-w-xl xl:max-w-4xl mx-auto text-sm font-medium">
     <div class="flex items-center justify-between pb-4">
       <h2>Plants</h2>
-      <%= link_to "Add Plants", search_plants_location_path(@location), data: { turbo_frame: "search_modal" }, class: "btn-primary", onclick: "showModal()" %>
+      <%= link_to "Add Plants", search_plants_location_path(@location), data: { turbo_frame: "search_modal" }, onclick: "showModal()", class: "btn-primary" %>
     </div>
-    <ul class="space-y-0.5">
+    <ul>
       <% @location.plants.order(:common_name).each do |plant| %>
-        <li class="flex items-center min-h-16 p-2 border border-stone-200 rounded">
-          <% if plant.photo.attached? %>
-            <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200 overflow-hidden">
-              <%= image_tag plant.photo.variant(:thumb) %>
+        <li class="flex items-center min-h-16 p-2 my-0.5 border border-stone-200 rounded">
+          <%= link_to plant_summary_path(plant), data: { turbo_frame: "search_modal" }, onclick: "showModal()", class: "grow" do %>
+            <div class="flex items-center">
+              <% if plant.photo.attached? %>
+                <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200 overflow-hidden">
+                  <%= image_tag plant.photo.variant(:thumb) %>
+                </div>
+              <% else %>
+                <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200"></div>
+              <% end %>
+              <span>
+                <%= plant.common_name %>
+              </span>
             </div>
-          <% else %>
-            <div class="rounded-full w-10 h-10 mr-2 bg-stone-100 border border-stone-200"></div>
           <% end %>
-          <span class="grow">
-            <%= plant.common_name %>
-          </span>
           <div class="text-red-800">
             <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plant_list", turbo_confirm: "Are you sure?" } %>
           </div>
