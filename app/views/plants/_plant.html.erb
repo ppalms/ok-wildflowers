@@ -1,15 +1,14 @@
 <div id="<%= dom_id plant %>">
-  <h1><%= plant.common_name %></h1>
+  <h2 class="mr-14"><%= plant.common_name %></h2>
+  <div class="text-lg font-bold text-stone-700">
+    <%= plant.scientific_name %>
+  </div>
   <% if plant.other_common_names.length > 0 %>
     <p class="my-5">
       <strong class="block font-medium mb-1">Other common names:</strong>
       <%= plant.other_common_names.join(", ") %>
     </p>
   <% end %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Scientific name:</strong>
-    <%= plant.scientific_name %>
-  </p>
   <p class="my-5">
     <strong class="block font-medium mb-1">Bloom colors:</strong>
     <%= plant.bloom_colors.map(&:name).join(", ") %>
