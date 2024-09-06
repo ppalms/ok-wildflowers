@@ -1,31 +1,47 @@
-<div class="w-full border-b border-b-stone-300 shadow">
-  <nav class="container mx-auto">
+<nav class="w-full border-b border-b-stone-300 shadow">
+  <div class="flex items-center">
+    <div class="mt-1.5">
+      <button class="hamburger hamburger--boring" type="button" onclick="toggleNavMenu()">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+    <div class="absolute left-1/2 transform -translate-x-1/2 font-bold">
+      <% if user_signed_in? %>
+        <span>
+          <%= link_to current_organization.name, root_path %>
+        </span>
+      <% else %>
+        <span>
+          <%= link_to "Gardenerd", root_path %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div id="nav_menu" class="absolute hidden w-full pl-2 bg-white border-b border-b-stone-300 shadow z-50">
     <% if user_signed_in? %>
-      <div class="w-full text-center font-bold p-2">
-        <%= link_to current_organization.name, root_path %>
+      <div class="p-2">
+        <%= link_to "Locations", locations_path %>
       </div>
-      <div class="flex justify-between items-center w-full px-2">
-        <div class="flex gap-2 items-center">
-          <%= link_to locations_path do %>
-            <div class="flex items-center h-10 p-2 <%= "border-b-2 border-blue-700" if request.path.start_with?(locations_path) %>">Locations</div>
-          <% end %>
-          <%= link_to plants_path do %>
-            <div class="flex items-center h-10 p-2 <%= "border-b-2 border-blue-700" if request.path.start_with?(plants_path) %>">Plants</div>
-          <% end %>
-        </div>
-        <div>
-          <%= button_to sanitize("Sign out &rarr;"), destroy_user_session_path, method: :delete, class: "text-sm hover:font-semibold" %>
-        </div>
+      <div class="p-2">
+        <%= link_to "Plants", plants_path %>
+      </div>
+      <div class="p-2 pb-4">
+        <%= button_to sanitize("Sign out &rarr;"), destroy_user_session_path, method: :delete %>
       </div>
     <% else %>
-      <div class="flex justify-between items-center w-full p-2">
-        <div class="font-bold pl-2">
-          <%= link_to "Gardenerd", root_path %>
-        </div>
-        <div>
-          <%= link_to "Sign in", new_user_session_path, class: "btn-secondary h-8 px-2 py-1 text-sm" %>
-        </div>
+      <div class="p-2 pb-4">
+        <%= link_to "Sign in", new_user_session_path %>
       </div>
     <% end %>
-  </nav>
-</div>
+  </div>
+</nav>
+<script>
+  function toggleNavMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('#nav_menu');
+    hamburger.classList.toggle('is-active');
+    nav.classList.toggle('hidden');
+  }
+</script>
