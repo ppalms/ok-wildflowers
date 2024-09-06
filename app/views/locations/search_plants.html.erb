@@ -3,7 +3,7 @@
     <div class="px-6 pt-6 pb-2 bg-stone-50 border-b border-stone-200 touch-pan-y sticky top-0 sm:rounded">
       <div class="flex justify-between">
         <h2>Add Plants</h2>
-        <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal()">&times;</button>
+        <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal('search_modal_wrapper')">&times;</button>
       </div>
       <div class="text-lg font-bold text-stone-700"><%= @location.name %></div>
       <%= form_with url: search_plants_location_path, method: :get, id: 'plant_search_form' do |form| %>

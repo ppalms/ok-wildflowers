@@ -1,8 +1,8 @@
-<%= turbo_frame_tag "search_modal" do %>
+<%= turbo_frame_tag "plant_summary_modal" do %>
   <div class="relative w-full h-full">
     <div class="sticky top-0 p-4 bg-white border-y border-stone-300 sm:border sm:rounded sm:max-w-screen-lg sm:mx-auto">
       <div class="absolute top-4 right-4">
-        <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal()">&times;</button>
+        <button type="button" class="flex justify-center items-center pb-1 rounded bg-stone-200 hover:bg-stone-300 border hover:border-stone-400 text-4xl font-semibold h-10 w-10 transition" onclick="hideModal('plant_summary_modal_wrapper')">&times;</button>
       </div>
       <%= render @plant %>
     </div>
