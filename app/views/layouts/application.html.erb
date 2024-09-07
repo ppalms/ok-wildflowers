@@ -13,8 +13,10 @@
     <header id="app-header" data-turbo-permanent>
       <%= render "layouts/navbar" %>
     </header>
-    <main class="container mx-auto p-5 relative">
-      <%= yield %>
+    <main class="relative">
+      <div class="container p-5 mx-auto">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
