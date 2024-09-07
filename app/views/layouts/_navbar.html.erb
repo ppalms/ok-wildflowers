@@ -19,15 +19,15 @@
       <% end %>
     </div>
   </div>
-  <div id="nav_menu" class="absolute hidden w-full pl-2 bg-white border-b border-b-stone-300 z-50">
+  <div id="nav_menu" class="absolute hidden w-full pl-2 bg-white border-b border-b-stone-300 shadow z-50">
     <% if user_signed_in? %>
-      <div class="p-2">
+      <div class="pt-4 p-2">
         <%= link_to "Locations", locations_path %>
       </div>
       <div class="p-2">
         <%= link_to "Plants", plants_path %>
       </div>
-      <div class="p-2 pb-4">
+      <div class="p-2 pb-6">
         <%= button_to sanitize("Sign out &rarr;"), destroy_user_session_path, method: :delete %>
       </div>
     <% else %>
@@ -38,18 +38,17 @@
   </div>
 </nav>
 <script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav_menu = document.querySelector('#nav_menu');
+
   function toggleNavMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('#nav_menu');
     hamburger.classList.toggle('is-active');
-    nav.classList.toggle('hidden');
+    nav_menu.classList.toggle('hidden');
   }
 
   // Close nav menu on navigation to new page
   document.addEventListener('turbo:visit', function() {
-    const nav = document.querySelector('#nav_menu');
-    const hamburger = document.querySelector('.hamburger');
-    nav.classList.add('hidden');
+    nav_menu.classList.add('hidden');
     hamburger.classList.remove('is-active');
   });
 </script>
