@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gardenerd<%= " - " + content_for(:title) if content_for?(:title) %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta name="turbo-visit-control" content="reload">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header id="app-header">
+      <%= render "layouts/navbar" %>
+    </header>
+    <main class="relative">
+      <div class="container p-5 mx-auto">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
