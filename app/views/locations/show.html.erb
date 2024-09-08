@@ -2,10 +2,10 @@
   <div id="modal_backdrop" class="absolute top-0 left-0 w-full h-full backdrop-blur-lg hidden transition">
   </div>
   <div id="search_plants_modal" class="absolute top-0 left-0 w-full h-full hidden">
-    <%= turbo_frame_tag "search_plants", loading: "lazy" %>
+    <%= turbo_frame_tag "search_plants" %>
   </div>
   <div id="plant_summary_modal" class="absolute top-0 left-0 w-full h-full hidden">
-    <%= turbo_frame_tag "plant_summary", loading: "lazy" %>
+    <%= turbo_frame_tag "plant_summary" %>
   </div>
   <div class="mb-6">
     <%= link_to sanitize("&larr; Browse locations"), locations_path %>
