@@ -33,4 +33,5 @@ Things you may want to cover:
   2. sudo kill -9 <postgresid>
 
 - Run in production mode (e.g., to test custom error pages)
+  - `RAILS_ENV=production bundle exec bin/rails assets:precompile`
   - `bin/rails s -e production`

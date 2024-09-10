@@ -47,6 +47,6 @@ class PlantsTest < ApplicationSystemTestCase
     visit plants_url
     click_link @plant.common_name
 
-    assert_selector "h1", text: @plant.common_name
+    assert_selector "h2", text: @plant.common_name
   end
 end
