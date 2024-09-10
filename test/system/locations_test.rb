@@ -19,7 +19,6 @@ class LocationsTest < ApplicationSystemTestCase
     click_on "Create Location"
 
     assert_text "Location was successfully created"
-    click_on "Back"
   end
 
   test "should update Location" do
@@ -30,7 +29,27 @@ class LocationsTest < ApplicationSystemTestCase
     click_on "Update Location"
 
     assert_text "New Location Name"
-    click_on "Back"
+  end
+
+  test "should add Note to Location" do
+    visit location_url(@location)
+    click_on "New Note", match: :first
+
+    fill_in "note_content", with: "This is a note"
+    click_on "Create Note"
+
+    assert_text "Note was successfully created"
+    assert_text "This is a note"
+  end
+
+  test "should not add blank Note to Location" do
+    visit location_url(@location)
+    click_on "New Note", match: :first
+
+    fill_in "note_content", with: ""
+    click_on "Create Note"
+
+    assert_text "Content can't be blank"
   end
 
   test "should delete Location" do

@@ -1,0 +1,11 @@
+<%= form_with model: [@location, @note], class: "contents" do |form| %>
+  <% if note.errors.any? %>
+    <%= render partial: "layouts/error_messages", locals: { errors: note.errors } %>
+  <% end %>
+  <div class="my-5">
+    <%= form.text_area :content, class: "text-field", autofocus: true %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

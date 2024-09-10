@@ -1,0 +1,13 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="notice" id="notice"><%= notice %></p>
+    <% end %>
+    <%= render @note %>
+    <%= link_to "Edit this note", edit_note_path(@note), class: "btn-secondary" %>
+    <%= link_to "Back to notes", notes_path, class: "btn-secondary" %>
+    <div class="inline-block">
+      <%= button_to "Delete this note", @note, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+</div>

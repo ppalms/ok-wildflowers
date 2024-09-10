@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_01_145549) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_09_164709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_145549) do
     t.index ["organization_id"], name: "index_locations_on_organization_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_notes_on_location_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -115,6 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_145549) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "locations", "organizations"
+  add_foreign_key "notes", "locations"
   add_foreign_key "plantings", "locations"
   add_foreign_key "plantings", "plants"
   add_foreign_key "plants", "organizations"

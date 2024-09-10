@@ -1,0 +1,17 @@
+<div class="pt-4 space-y-0.5 max-w-xl xl:max-w-4xl mx-auto text-sm font-medium">
+  <div class="flex items-center justify-between pb-4">
+    <h2>Notes</h2>
+    <div class="flex gap-2">
+      <%= link_to "New Note", new_location_note_path(@location), class: "btn-primary" %>
+    </div>
+  </div>
+  <div id="note_list">
+    <% if @location.notes.empty? %>
+      <p class="text-center">No notes found.</p>
+    <% else %>
+      <% @location.notes.each do |note| %>
+        <%= render partial: "locations/notes/note", locals: { note: } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
