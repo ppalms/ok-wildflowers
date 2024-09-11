@@ -25,7 +25,7 @@ class PlantsTest < ApplicationSystemTestCase
 
   test "should update Plant" do
     visit plant_url(@plant)
-    click_on "Edit this plant", match: :first
+    click_on "Edit", match: :first
 
     fill_in "Scientific name", with: @plant.scientific_name
     click_on "Update Plant"
@@ -36,7 +36,7 @@ class PlantsTest < ApplicationSystemTestCase
 
   test "should delete Plant" do
     visit plant_url(@plant)
-    click_on "Delete this plant", match: :first
+    click_on "Delete", match: :first
 
     accept_confirm
 

@@ -1,13 +1,17 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
+<div class="mx-auto md:w-2/3 w-full">
+  <div class="mb-6">
+    <%= link_to sanitize("&larr; Back"), plants_path %>
+  </div>
+  <% if notice.present? %>
+    <div class="flex justify-center">
       <p class="notice" id="notice"><%= notice %></p>
-    <% end %>
-    <%= render @plant %>
-    <%= link_to "Edit this plant", edit_plant_path(@plant), class: "btn-secondary" %>
-    <%= link_to "Back to plants", plants_path, class: "btn-secondary" %>
-    <div class="inline-block">
-      <%= button_to "Delete this plant", @plant, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
+  <% end %>
+  <div class="mt-6">
+    <%= render @plant %>
+  </div>
+  <div class="mt-6 flex justify-center space-x-2">
+    <%= link_to "Edit", edit_plant_path(@plant), class: "btn-secondary" %>
+    <%= button_to "Delete", @plant, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>
   </div>
 </div>
