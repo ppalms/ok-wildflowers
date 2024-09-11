@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="mx-auto md:w-2/3 w-full">
   <div id="modal_backdrop" class="absolute top-0 left-0 w-full h-full backdrop-blur-lg hidden transition">
   </div>
   <div id="search_plants_modal" class="absolute top-0 left-0 w-full h-full hidden">
@@ -8,7 +8,7 @@
     <%= turbo_frame_tag "plant_summary" %>
   </div>
   <div class="mb-6">
-    <%= link_to sanitize("&larr; Browse locations"), locations_path %>
+    <%= link_to sanitize("&larr; Back"), locations_path %>
   </div>
   <% if notice.present? %>
     <div class="flex justify-center">
