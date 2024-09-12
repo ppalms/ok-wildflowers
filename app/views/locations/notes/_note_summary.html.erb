@@ -1,5 +1,7 @@
-<div id="<%= dom_id note %>">
-  <p class="my-5">
-    <%= note.content[0..20] %>
-  </p>
-</div>
+<span id="<%= dom_id note %>">
+  <% if note.content.length > 40 %>
+    <%= note.content[0..40].strip %>...
+  <% else %>
+    <%= note.content %>
+  <% end %>
+</span>

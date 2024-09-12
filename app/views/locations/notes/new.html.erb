@@ -1,4 +1,7 @@
 <div class="mx-auto md:w-2/3 w-full">
+  <div class="mb-6">
+    <%= link_to sanitize("&larr; Back"), location_path(@location) %>
+  </div>
   <h1>New note</h1>
   <%= render "locations/notes/form", note: @note %>
 </div>

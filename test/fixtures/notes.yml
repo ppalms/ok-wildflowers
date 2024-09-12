@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
+  location_id: 1
+  content: This is a note
 
 two:
-  content: MyText
+  location_id: 1
+  content: This is another note

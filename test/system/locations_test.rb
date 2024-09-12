@@ -21,7 +21,7 @@ class LocationsTest < ApplicationSystemTestCase
     assert_text "Location was successfully created"
   end
 
-  test "should update Location" do
+  test "should update location" do
     visit location_url(@location)
     click_on "Edit", match: :first
 
@@ -31,28 +31,62 @@ class LocationsTest < ApplicationSystemTestCase
     assert_text "New Location Name"
   end
 
-  test "should add Note to Location" do
+  test "should add note to location" do
     visit location_url(@location)
-    click_on "New Note", match: :first
+    click_on "Add Note", match: :first
 
-    fill_in "note_content", with: "This is a note"
+    fill_in "note_content", with: "This is a new note"
     click_on "Create Note"
 
     assert_text "Note was successfully created"
-    assert_text "This is a note"
+    assert_text "This is a new note"
   end
 
-  test "should not add blank Note to Location" do
+  test "should not save blank note to location" do
     visit location_url(@location)
-    click_on "New Note", match: :first
+    click_on "Add Note", match: :first
 
     fill_in "note_content", with: ""
     click_on "Create Note"
 
     assert_text "Content can't be blank"
+
+    click_on "Back"
+    click_on "This is a note", match: :first
+
+    click_on "Edit", match: :first
+
+    fill_in "note_content", with: ""
+    click_on "Update Note"
+
+    assert_text "Content can't be blank"
   end
 
-  test "should delete Location" do
+  test "should edit note" do
+    visit location_url(@location)
+    click_on "This is a note", match: :first
+
+    click_on "Edit", match: :first
+
+    fill_in "note_content", with: "This is an edited note"
+    click_on "Update Note"
+
+    assert_text "Note was successfully updated"
+    assert_text "This is an edited note"
+  end
+
+  test "should delete note" do
+    visit location_url(@location)
+    click_on "This is a note", match: :first
+
+    click_on "Delete", match: :first
+
+    accept_confirm
+
+    assert_text "Note was successfully deleted"
+  end
+
+  test "should delete location" do
     visit location_url(@location)
     click_on "Delete this location", match: :first
 
