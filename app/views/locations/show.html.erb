@@ -7,7 +7,7 @@
   <div id="plant_summary_modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full md:w-2/3 xl:w-1/2 bg-white shadow-lg h-auto hidden">
     <%= turbo_frame_tag "plant_summary" %>
   </div>
-  <div class="pt-4 pb-2">
+  <div class="py-2">
     <%= link_to sanitize("&larr; Back"), locations_path %>
   </div>
   <% if notice.present? %>
@@ -16,7 +16,7 @@
     </div>
   <% end %>
   <%= turbo_frame_tag @location do %>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between">
       <h1><%= @location.name %></h1>
       <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
     </div>
