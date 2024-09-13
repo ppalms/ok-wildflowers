@@ -15,14 +15,15 @@
         <% end %>
         <% @overview[:plants_with_bloom_periods].each do |plant_info| %>
           <% (plant_info[:pre_bloom_months]).times do |i| %>
-            <div class="<%= i == 0 ? 'border-r' : 'border-x' %>"></div>
+            <div class="border-r"></div>
           <% end %>
           <% interval = plant_info[:bloom_months] %>
           <div style="grid-column: span <%= interval %> / span <%= interval %>;" class="interval">
+            <%# TODO: allow name to overflow to stay on single line %>
             <%= plant_info[:common_name] %>
           </div>
           <% (plant_info[:post_bloom_months]).times do |i| %>
-            <div class="<%= i == (plant_info[:post_bloom_months] - 1) ? 'border-l' : 'border-x' %>"></div>
+            <div class="border-l"></div>
           <% end %>
         <% end %>
       </div>
