@@ -1,5 +1,5 @@
 <% content_for :title, "Locations" %>
-<div class="mx-auto md:w-2/3 w-full">
+<div id="locations">
   <% if notice.present? %>
     <div class="flex justify-center">
       <p class="notice" id="notice"><%= notice %></p>
@@ -9,7 +9,7 @@
     <h1>Locations</h1>
     <%= link_to "New location", new_location_path, class: "btn-primary" %>
   </div>
-  <div id="locations" class="min-w-full">
+  <div id="location_list" class="min-w-full">
     <% @locations.each do |location| %>
       <%= render location %>
       <p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>Gardenerd<%= " - " + content_for(:title) if content_for?(:title) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
@@ -9,14 +9,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <header id="app-header" data-turbo-permanent>
+  <body class="h-full flex flex-col">
+    <header data-turbo-permanent>
       <%= render "layouts/navbar" %>
     </header>
-    <main class="relative">
-      <div class="container p-5 mx-auto">
-        <%= yield %>
-      </div>
+    <main class="flex-grow">
+      <%= render "layouts/main" %>
     </main>
   </body>
 </html>

@@ -11,13 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header id="app-header">
+    <header>
       <%= render "layouts/navbar" %>
     </header>
-    <main class="relative">
-      <div class="container p-5 mx-auto">
-        <%= yield %>
-      </div>
+    <main class="flex-grow">
+      <%= render "layouts/main" %>
     </main>
   </body>
 </html>
