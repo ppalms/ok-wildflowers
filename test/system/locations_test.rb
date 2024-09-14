@@ -105,10 +105,13 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "should edit note" do
     visit location_url(@location)
-    click_on "This is a note", match: :first
+    note = notes(:one)
 
-    click_on "Edit", match: :first
+    click_on note.content
 
+    assert_text note.created_at.strftime("%m/%d/%Y")
+
+    click_on "Edit"
     fill_in "note_content", with: "This is an edited note"
     click_on "Update Note"
 
@@ -120,11 +123,11 @@ class LocationsTest < ApplicationSystemTestCase
     visit location_url(@location)
     note = notes(:one)
 
-    click_on note.content, match: :first
+    click_on note.content
 
     assert_text note.created_at.strftime("%m/%d/%Y")
 
-    click_on "Delete", match: :first
+    click_on "Delete"
 
     accept_confirm
 

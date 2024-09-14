@@ -16,7 +16,7 @@
     </div>
   <% end %>
   <%= turbo_frame_tag @location do %>
-    <div class="flex justify-between">
+    <div class="flex justify-between items-start">
       <h1><%= @location.name %></h1>
       <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
     </div>
