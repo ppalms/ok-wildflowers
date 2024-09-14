@@ -66,8 +66,7 @@ class LocationsController < ApplicationController
     @plants = @plants.where("common_name ILIKE ?", "%#{params[:name]}%").or(@plants.where("scientific_name ILIKE ?", "%#{params[:name]}%")) if params[:name].present?
 
     respond_to do |format|
-      format.html { render :search_plants }
-      format.turbo_stream { render :search_plants }
+      format.html { render "locations/plants/search_plants" }
     end
   end
 
@@ -81,8 +80,8 @@ class LocationsController < ApplicationController
         @plants = @location.plants
         render turbo_stream: [
           turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
-          turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants }),
-          turbo_stream.replace("plant_#{plant.id}_add_button", partial: "locations/added_plant", locals: { plant: })
+          turbo_stream.replace("plants", partial: "locations/plants", locals: { plants: @plants }),
+          turbo_stream.replace("plant_#{plant.id}_add_button", partial: "locations/plants/added_plant", locals: { plant: })
         ]
       end
       format.html { redirect_to @location, notice: "#{plant.common_name} was successfully added." }
@@ -99,7 +98,7 @@ class LocationsController < ApplicationController
         @plants = @location.plants
         render turbo_stream: [
           turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
-          turbo_stream.replace("plant_list", partial: "locations/plant_list", locals: { plants: @plants })
+          turbo_stream.replace("plants", partial: "locations/plants", locals: { plants: @plants })
         ]
       end
       format.html { redirect_to @location, notice: 'Plant was successfully removed.' }

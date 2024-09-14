@@ -25,13 +25,18 @@ Things you may want to cover:
 
 - ...
 
-## Dev playbook
+## Dev notes
+
+- Run e2e tests after making changes
+
+  - `bin/rails e2e:run`
 
 - Need to nuke local dev db but "being accessed by other users" due to zombie process
 
-  1. ps -ef | grep postgres
-  2. sudo kill -9 <postgresid>
+  - ps -ef | grep postgres
+  - sudo kill -9 <postgresid>
 
 - Run in production mode (e.g., to test custom error pages)
+
   - `RAILS_ENV=production bundle exec bin/rails assets:precompile`
   - `bin/rails s -e production`

@@ -31,6 +31,47 @@ class LocationsTest < ApplicationSystemTestCase
     assert_text "New Location Name"
   end
 
+  test "should add plant to location" do
+    visit location_url(@location)
+    click_on "Add Plants"
+
+    assert_selector :css, "#search_plants", visible: true
+
+    plant = plants(:indian_paintbrush)
+
+    button_wrapper = find("#plant_#{plant.id}_add_button")
+    within(button_wrapper) do
+      page.execute_script("arguments[0].click();", find('input[type="submit"]'))
+    end
+
+    assert_text "Added"
+
+    click_button "×"
+    assert_selector :css, "#search_plants", visible: false
+
+    assert_text plant.common_name
+    assert @location.plants.include?(plant)
+  end
+
+  test "should remove plant from location" do
+    visit location_url(@location)
+
+    plant = plants(:indian_paintbrush)
+    @location.plants << plant
+
+    visit location_url(@location)
+
+    button_wrapper = find("#remove_plant_#{plant.id}")
+    within(button_wrapper) do
+      click_button "Remove"
+    end
+
+    accept_confirm
+
+    assert_no_text plant.common_name
+    assert_not @location.plants.include?(plant)
+  end
+
   test "should add note to location" do
     visit location_url(@location)
     click_on "Add Note", match: :first
@@ -77,7 +118,11 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "should delete note" do
     visit location_url(@location)
-    click_on "This is a note", match: :first
+    note = notes(:one)
+
+    click_on note.content, match: :first
+
+    assert_text note.created_at.strftime("%m/%d/%Y")
 
     click_on "Delete", match: :first
 

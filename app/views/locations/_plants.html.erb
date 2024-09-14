@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "plant_list" do %>
+<%= turbo_frame_tag "plants" do %>
   <div class="space-y-0.5 max-w-xl xl:max-w-4xl mx-auto text-sm font-medium">
     <div class="flex items-center justify-between pb-4">
       <h2>Plants</h2>
@@ -21,8 +21,8 @@
               </span>
             </div>
           <% end %>
-          <div class="text-red-800">
-            <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plant_list", turbo_confirm: "Are you sure?" } %>
+          <div class="text-red-800" id="remove_plant_<%= plant.id %>">
+            <%= button_to 'Remove', remove_plant_location_path(@location, plant_id: plant.id), method: :delete, data: { turbo_frame: "plants", turbo_confirm: "Are you sure?" } %>
           </div>
         </li>
       <% end %>
