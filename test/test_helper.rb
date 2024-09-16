@@ -10,6 +10,9 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    def click_tab(tab_name)
+      tab = find("a.group.tab", text: tab_name)
+      tab.click
+    end
   end
 end

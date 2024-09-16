@@ -16,19 +16,21 @@
     </div>
   <% end %>
   <%= turbo_frame_tag @location do %>
-    <div class="flex justify-between items-start">
+    <div class="flex justify-between items-start sm:items-center">
       <h1><%= @location.name %></h1>
       <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
     </div>
   <% end %>
   <div class="my-2">
-    <%= render partial: "overview" %>
-  </div>
-  <div class="my-2">
-    <%= render partial: "plants" %>
-  </div>
-  <div class="my-2">
-    <%= render partial: "notes" %>
+    <%= turbo_frame_tag "location_details" do %>
+      <%= render "tabs", selected_tab: "overview" %>
+      <div class="my-2">
+        <%= render partial: "overview" %>
+      </div>
+      <div class="my-2">
+        <%= render partial: "plants" %>
+      </div>
+    <% end %>
   </div>
   <div class="my-6 text-center">
     <%= button_to "Delete this location", @location, method: :delete, class: "btn-danger", form: { data: { turbo_confirm: "Are you sure?" } } %>

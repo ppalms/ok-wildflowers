@@ -2,6 +2,11 @@ class NotesController < ApplicationController
   before_action :set_location
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @notes = @location.notes
+    render 'locations/notes/index'
+  end
+
   def new
     @note = @location.notes.build
     render 'locations/notes/new'
