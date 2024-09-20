@@ -2,39 +2,26 @@
 
 [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails) [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+- Ruby 3.2.4
+- Docker
 
-- Ruby version
+## Getting Started
 
-- System dependencies
+Run `bin\setup` from the project root. The setup script will take care of the following:
 
-- Configuration
+- Install application gems
+- Create a development database in a Docker container
+- Prepare the database and run all migrations
 
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+Run `bin\dev` to run the app at *http://localhost:3000*
 
 ## Dev notes
 
 - Run e2e tests after making changes
 
   - `bin/rails e2e:run`
-
-- Need to nuke local dev db but "being accessed by other users" due to zombie process
-
-  - ps -ef | grep postgres
-  - sudo kill -9 <postgresid>
 
 - Run in production mode (e.g., to test custom error pages)
 
