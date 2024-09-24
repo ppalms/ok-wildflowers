@@ -20,7 +20,7 @@
   }
 
   .btn-danger {
-    @apply rounded-lg py-3 px-5 bg-red-100 hover:bg-red-200 border border-red-200 hover:border-red-300 transition inline-block font-medium;
+    @apply rounded-lg py-3 px-5 text-red-800 hover:bg-red-200 border border-red-200 hover:border-red-300 transition inline-block font-semibold;
   }
 
   .text-field {

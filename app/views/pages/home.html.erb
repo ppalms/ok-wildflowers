@@ -3,12 +3,6 @@
     <p class="notice" id="notice"><%= notice %></p>
   <% end %>
   <h1 class="px-6 pt-12 pb-4 sm:text-5xl">Welcome</h1>
-  <div class="p-6 text-left max-w-sm mx-auto">
-    <ul class="text-lg text-stone-500 space-y-2">
-      <li>🌻 Catalog your plants</li>
-      <li>🌻 Keep tabs on your garden</li>
-    </ul>
-  </div>
   <% if user_signed_in? %>
     <%= link_to "Get started", locations_path, class: "btn-secondary mt-4" %>
   <% else %>
