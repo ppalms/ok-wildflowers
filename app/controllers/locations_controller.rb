@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    @locations = current_organization.locations
+    @locations = tenant.locations
   end
 
   # GET /locations/1 or /locations/1.json
@@ -24,7 +24,7 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
-    @location = current_organization.locations.build(location_params)
+    @location = tenant.locations.build(location_params)
 
     respond_to do |format|
       if @location.save
@@ -62,7 +62,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/search_plants
   def search_plants
-    @plants = current_organization.plants.order(:common_name)
+    @plants = tenant.plants.order(:common_name)
     @plants = @plants.where("common_name ILIKE ?", "%#{params[:name]}%").or(@plants.where("scientific_name ILIKE ?", "%#{params[:name]}%")) if params[:name].present?
 
     respond_to do |format|
@@ -71,7 +71,7 @@ class LocationsController < ApplicationController
   end
 
   def add_plant
-    plant = current_organization.plants.find(params[:plant_id])
+    plant = tenant.plants.find(params[:plant_id])
     @location.plants << plant unless @location.plants.include?(plant)
 
     respond_to do |format|
@@ -89,7 +89,7 @@ class LocationsController < ApplicationController
   end
 
   def remove_plant
-    plant = current_organization.plants.find(params[:plant_id])
+    plant = tenant.plants.find(params[:plant_id])
     @location.plants.delete(plant)
 
     respond_to do |format|
@@ -108,7 +108,7 @@ class LocationsController < ApplicationController
   private
 
   def set_location
-    @location = current_organization.locations.find(params[:id])
+    @location = tenant.locations.find(params[:id])
   end
 
   def location_params

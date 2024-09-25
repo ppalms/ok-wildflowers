@@ -3,7 +3,7 @@ class PlantsController < ApplicationController
 
   # GET /plants or /plants.json
   def index
-    @plants = current_organization.plants.order(:common_name)
+    @plants = tenant.plants.order(:common_name)
     @plants = @plants.where("common_name ILIKE ?", "%#{params[:name]}%").or(@plants.where("scientific_name ILIKE ?", "%#{params[:name]}%")) if params[:name].present?
     @plants = @plants.joins(:bloom_colors).where(bloom_colors: { id: params[:bloom_colors].split(",") }).distinct if params[:bloom_colors].present?
   end
@@ -30,7 +30,7 @@ class PlantsController < ApplicationController
 
   # POST /plants or /plants.json
   def create
-    @plant = current_organization.plants.build(plant_params)
+    @plant = tenant.plants.build(plant_params)
 
     respond_to do |format|
       if @plant.save
@@ -69,7 +69,7 @@ class PlantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plant
-      @plant = current_organization.plants.find(params[:id])
+      @plant = tenant.plants.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

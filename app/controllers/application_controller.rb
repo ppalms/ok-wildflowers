@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_organization
-    @current_organization ||= current_user.organization if user_signed_in?
+  def tenant
+    @tenant ||= current_user.organization if user_signed_in?
   end
-  helper_method :current_organization
+  helper_method :tenant
 end

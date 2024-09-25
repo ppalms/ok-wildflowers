@@ -10,7 +10,7 @@
     <div class="absolute left-1/2 -translate-x-1/2 font-bold">
       <% if user_signed_in? %>
         <span>
-          <%= link_to current_organization.name, root_path %>
+          <%= link_to tenant.name, root_path %>
         </span>
       <% else %>
         <span>
