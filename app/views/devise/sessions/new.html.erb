@@ -1,9 +1,10 @@
 <div class="max-w-md mx-auto pt-12">
   <h2>Sign in</h2>
   <%= form_with(model: resource, as: resource_name, url: session_path(resource_name), class: "flex flex-col gap-y-4 mt-4", data: { turbo: false }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "layouts/error_messages", errors: resource.errors %>
+
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
     </div>
     <div class="field">

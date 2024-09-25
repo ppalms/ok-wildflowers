@@ -3,9 +3,6 @@
     <%= link_to sanitize("&larr; Back"), location_path(@location) %>
   </div>
   <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="notice" id="notice"><%= notice %></p>
-    <% end %>
     <h2>Note</h2>
     <div class="text-lg font-bold text-stone-700"><%= @location.name %> - <%= @note.created_at.strftime("%m/%d/%Y") %></div>
     <%= render partial: 'locations/notes/note', locals: { note: @note }%>

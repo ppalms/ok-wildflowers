@@ -1,7 +1,8 @@
 <%= form_with(model: plant, class: "contents") do |form| %>
   <% if plant.errors.any? %>
-    <%= render partial: "layouts/error_messages", locals: { errors: plant.errors } %>
+    <%= render "layouts/error_messages", errors: plant.errors %>
   <% end %>
+
   <div class="my-5">
     <%= form.label :common_name %>
     <%= form.text_field :common_name, class: "text-field", autofocus: true %>

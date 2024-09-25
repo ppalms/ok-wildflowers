@@ -78,4 +78,4 @@ group :test do
 end
 
 # Flexible authentication solution for Rails with Warden https://github.com/heartcombo/devise
-gem "devise", "~> 4.8.1"
+gem "devise", "~> 4.9.4"

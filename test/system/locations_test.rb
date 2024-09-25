@@ -74,6 +74,8 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "should delete location" do
     visit location_url(@location)
+    click_on "Edit"
+
     click_on "Delete this location"
 
     accept_confirm

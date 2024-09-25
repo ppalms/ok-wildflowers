@@ -1,7 +1,6 @@
 <%= form_with(model: location, class: "contents") do |form| %>
-  <% if location.errors.any? %>
-    <%= render partial: "layouts/error_messages", locals: { errors: location.errors } %>
-  <% end %>
+  <%= render "layouts/error_messages", errors: location.errors %>
+  
   <div class="my-5">
     <%= form.label :name %>
     <%= form.text_field :name, class: "text-field", autofocus: true %>

@@ -10,11 +10,6 @@
   <div class="py-2">
     <%= link_to sanitize("&larr; Back"), locations_path %>
   </div>
-  <% if notice.present? %>
-    <div class="flex justify-center">
-      <p class="notice" id="notice"><%= notice %></p>
-    </div>
-  <% end %>
   <%= turbo_frame_tag @location do %>
     <div class="flex justify-between items-start sm:items-center">
       <h1><%= @location.name %></h1>

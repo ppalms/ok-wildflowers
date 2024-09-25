@@ -1,14 +1,12 @@
 <% content_for :title, "Plants" %>
 <div id="plants">
-  <% if notice.present? %>
-    <p class="notice" id="notice"><%= notice %></p>
-  <% end %>
   <div class="flex justify-between items-center">
     <h1>Plants</h1>
     <div class="flex gap-2">
       <%= link_to "New plant", new_plant_path, class: "btn-primary" %>
     </div>
   </div>
+
   <%= render partial: 'search' %>
   <div id="plant_list">
     <% if @plants.empty? %>

@@ -2,11 +2,6 @@
   <div class="py-2">
     <%= link_to sanitize("&larr; Back"), locations_path %>
   </div>
-  <% if notice.present? %>
-    <div class="flex justify-center">
-      <p class="notice" id="notice"><%= notice %></p>
-    </div>
-  <% end %>
   <div class="mt-6">
     <h1>New location</h1>
     <%= render "form", location: @location %>

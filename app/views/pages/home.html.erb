@@ -1,7 +1,4 @@
 <div class="container text-center">
-  <% if notice.present? %>
-    <p class="notice" id="notice"><%= notice %></p>
-  <% end %>
   <h1 class="px-6 pt-12 pb-4 sm:text-5xl">Welcome</h1>
   <% if user_signed_in? %>
     <%= link_to "Get started", locations_path, class: "btn-secondary mt-4" %>
