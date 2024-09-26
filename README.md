@@ -17,6 +17,17 @@ Run `bin\setup` from the project root. The setup script will take care of the fo
 
 Run `bin\dev` to run the app at *http://localhost:3000*
 
+## Infrastructure
+
+### DigitalOcean
+- App droplet (1 GB Memory / 25 GB Disk / NYC1 - Ubuntu 24.04 (LTS) x64)
+- Database droplet (1 GB Memory / 25 GB Disk / NYC1 - Ubuntu 24.04 (LTS) x64)
+
+### AWS
+- S3 bucket for [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html)
+- SES configuration for [Action Mailer](https://guides.rubyonrails.org/action_mailer_basics.html)
+- IAM user account for sending email
+
 ## Dev notes
 
 - Run e2e tests after making changes
@@ -27,3 +38,6 @@ Run `bin\dev` to run the app at *http://localhost:3000*
 
   - `RAILS_ENV=production bundle exec bin/rails assets:precompile`
   - `bin/rails s -e production`
+
+- Search production logs
+  - `kamal app logs -g <request ID or something else>`
