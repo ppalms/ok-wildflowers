@@ -40,5 +40,13 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Run e2e tests
+        run: |
+          docker compose up -d db
+          bin/rails db:prepare
+          bin/rails log:clear tmp:clear
+          bin/rails restart
+          bin/rails e2e:run
+
       - name: Run deploy command
         run: kamal deploy
