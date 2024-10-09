@@ -23,7 +23,7 @@ FileUtils.chdir APP_ROOT do
   # end
 
   puts "\n== Starting PostgreSQL with Docker =="
-  system! "docker compose up -d db"
+  system! "docker compose up -d db --wait"
 
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
