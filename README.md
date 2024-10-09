@@ -1,6 +1,6 @@
 # Gardenerd
 
-[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails) [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
+[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails) [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide) [![CI Build](https://github.com/ppalms/ok-wildflowers/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ppalms/ok-wildflowers/actions/workflows/ci.yml)
 
 ## Dependencies
 
