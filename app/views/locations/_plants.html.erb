@@ -29,3 +29,28 @@
     </ul>
   </div>
 <% end %>
+
+<div id="search_plants_modal" class="modal-full-screen hidden">
+  <%= turbo_frame_tag "search_plants" %>
+</div>
+
+<div id="plant_summary_modal" class="modal-small hidden">
+  <%= turbo_frame_tag "plant_summary" %>
+</div>
+
+<div id="modal_backdrop" class="modal-backdrop hidden">
+</div>
+
+<script>
+  function show(modal_id) {
+    document.getElementById(modal_id).classList.remove('hidden');
+    document.getElementById('modal_backdrop').classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Disable background scroll
+  }
+
+  function hide(modal_id) {
+    document.getElementById('modal_backdrop').classList.add('hidden');
+    document.getElementById(modal_id).classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+</script>

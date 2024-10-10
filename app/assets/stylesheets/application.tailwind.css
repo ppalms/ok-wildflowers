@@ -66,4 +66,16 @@
   .tabs .active {
     @apply border-blue-500 text-blue-600;
   }
+
+  .modal-backdrop {
+    @apply fixed inset-0 z-10 w-full h-full bg-black bg-opacity-50 transition-opacity;
+  }
+
+  .modal-full-screen {
+    @apply fixed inset-0 z-20 mx-auto w-full md:w-2/3 max-h-screen overflow-y-auto;
+  }
+
+  .modal-small {
+    @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full md:w-2/3 xl:w-1/2 bg-white shadow-lg h-auto;
+  }
 }

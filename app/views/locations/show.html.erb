@@ -1,12 +1,4 @@
 <div id="show_<%= dom_id @location %>">
-  <div id="modal_backdrop" class="fixed inset-0 z-10 w-full h-full bg-black bg-opacity-50 hidden transition-opacity">
-  </div>
-  <div id="search_plants_modal" class="fixed inset-0 z-20 mx-auto w-full md:w-2/3 max-h-screen overflow-y-auto hidden">
-    <%= turbo_frame_tag "search_plants" %>
-  </div>
-  <div id="plant_summary_modal" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full md:w-2/3 xl:w-1/2 bg-white shadow-lg h-auto hidden">
-    <%= turbo_frame_tag "plant_summary" %>
-  </div>
   <div class="py-2">
     <%= link_to sanitize("&larr; Back"), locations_path %>
   </div>
@@ -28,16 +20,3 @@
     <% end %>
   </div>
 </div>
-<script>
-  function show(modal_id) {
-    document.getElementById(modal_id).classList.remove('hidden');
-    document.getElementById('modal_backdrop').classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Disable background scroll
-  }
-
-  function hide(modal_id) {
-    document.getElementById('modal_backdrop').classList.add('hidden');
-    document.getElementById(modal_id).classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-</script>
