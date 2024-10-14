@@ -1,6 +1,8 @@
 <div id="<%= dom_id @location %>_overview">
-  <%= turbo_frame_tag "overview" do %>
-    <p>
+  <%= turbo_frame_tag "location_details" do %>
+    <%= render "tabs", selected_tab: "overview" %>
+
+    <p class="mt-4">
       <strong>Peak Bloom Months:</strong>
       <%= @overview[:peak_bloom_months].present? ? @overview[:peak_bloom_months].join(', ') : 'No data available' %>
     </p>

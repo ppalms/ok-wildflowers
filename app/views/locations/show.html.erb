@@ -8,15 +8,34 @@
       <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
     </div>
   <% end %>
-  <div class="my-2">
-    <%= turbo_frame_tag "location_details" do %>
-      <%= render "tabs", selected_tab: "overview" %>
-      <div class="my-2">
-        <%= render partial: "overview" %>
-      </div>
-      <div class="my-2">
-        <%= render partial: "plants" %>
-      </div>
-    <% end %>
+
+  <div class="my-1">
+    <%= render partial: "overview" %>
   </div>
 </div>
+
+<div id="search_plants_modal" class="modal-full-screen hidden">
+  <%= turbo_frame_tag "search_plants" %>
+</div>
+
+<div id="plant_summary_modal" class="modal-small hidden">
+  <%= turbo_frame_tag "plant_summary" %>
+</div>
+
+<div id="modal_backdrop" class="modal-backdrop hidden">
+</div>
+
+<script>
+  function show(modal_id) {
+    document.getElementById(modal_id).classList.remove('hidden');
+    document.getElementById('modal_backdrop').classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Disable background scroll
+  }
+
+  function hide(modal_id) {
+    document.getElementById('modal_backdrop').classList.add('hidden');
+    document.getElementById(modal_id).classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+</script>
+

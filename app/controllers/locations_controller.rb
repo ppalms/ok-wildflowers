@@ -1,7 +1,8 @@
 class LocationsController < ApplicationController
   include LocationsHelper
 
-  before_action :set_location, only: %i[show edit update destroy search_plants add_plant remove_plant]
+  before_action :set_location, only: %i[show edit update destroy]
+  before_action :set_plant_location, only: %i[list_plants search_plants add_plant remove_plant]
 
   # GET /locations or /locations.json
   def index
@@ -60,6 +61,14 @@ class LocationsController < ApplicationController
     end
   end
 
+  def list_plants
+    @plants = @location.plants.order(:common_name)
+
+    respond_to do |format|
+      format.html { render "locations/plants/index" }
+    end
+  end
+
   # GET /locations/1/search_plants
   def search_plants
     @plants = tenant.plants.order(:common_name)
@@ -79,8 +88,7 @@ class LocationsController < ApplicationController
         @overview = location_overview(@location)
         @plants = @location.plants
         render turbo_stream: [
-          turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
-          turbo_stream.replace("plants", partial: "locations/plants", locals: { plants: @plants }),
+          turbo_stream.replace("location_details", template: "locations/plants/index"),
           turbo_stream.replace("plant_#{plant.id}_add_button", partial: "locations/plants/added_plant", locals: { plant: })
         ]
       end
@@ -97,8 +105,7 @@ class LocationsController < ApplicationController
         @overview = location_overview(@location)
         @plants = @location.plants
         render turbo_stream: [
-          turbo_stream.replace("overview", partial: "locations/overview", locals: { overview: @overview }),
-          turbo_stream.replace("plants", partial: "locations/plants", locals: { plants: @plants })
+          turbo_stream.replace("location_details", template: "locations/plants/index")
         ]
       end
       format.html { redirect_to @location, notice: 'Plant was successfully removed.' }
@@ -109,6 +116,10 @@ class LocationsController < ApplicationController
 
   def set_location
     @location = tenant.locations.find(params[:id])
+  end
+
+  def set_plant_location
+    @location = tenant.locations.find(params[:location_id])
   end
 
   def location_params

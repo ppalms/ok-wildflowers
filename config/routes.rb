@@ -10,14 +10,12 @@ Rails.application.routes.draw do
   resources :plants
   get 'plants/:id/summary', to: 'plants#show_summary', as: 'plant_summary'
 
-  get "locations" => "locations#index"
   resources :locations
   resources :locations, only: [:show] do
-    member do
-      get 'search_plants'
-      post 'add_plant'
-      delete 'remove_plant'
-    end
+    get 'plants/index', to: 'locations#list_plants', as: 'plants'
+    get 'search_plants', as: 'search_plants'
+    post 'plants/add_plant', to: 'locations#add_plant', as: 'add_plant'
+    delete 'plants/remove_plant', to: 'locations#remove_plant', as: 'remove_plant'
     resources :notes
   end
 

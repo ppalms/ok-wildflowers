@@ -33,6 +33,7 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "should add plant to location" do
     visit location_url(@location)
+    click_on "Plants"
     click_on "Add Plants"
 
     assert_selector :css, "#search_plants", visible: true
@@ -54,12 +55,11 @@ class LocationsTest < ApplicationSystemTestCase
   end
 
   test "should remove plant from location" do
-    visit location_url(@location)
-
     plant = plants(:indian_paintbrush)
     @location.plants << plant
 
     visit location_url(@location)
+    click_on "Plants"
 
     button_wrapper = find("#remove_plant_#{plant.id}")
     within(button_wrapper) do
