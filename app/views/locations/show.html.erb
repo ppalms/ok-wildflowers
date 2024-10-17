@@ -1,18 +1,30 @@
-<div id="show_<%= dom_id @location %>">
-  <div class="py-2">
-    <%= link_to sanitize("&larr; Back"), locations_path %>
-  </div>
-  <%= turbo_frame_tag @location do %>
-    <div class="flex justify-between items-start sm:items-center">
-      <h1><%= @location.name %></h1>
-      <%= link_to "Edit", edit_location_path(@location), class: "btn-secondary" %>
-    </div>
-  <% end %>
+<% content_for :title, @location.name %>
 
-  <div class="my-1">
-    <%= render partial: "overview" %>
+<section class="bg-neutral-100">
+  <div class="container pt-6">
+    <div class="py-2">
+      <%= link_to sanitize("&larr; Back"), locations_path %>
+    </div>
+
+    <%= turbo_frame_tag @location do %>
+      <% if notice.present? %>
+  <div class="flex justify-center pt-4">
+    <p class="notice" id="notice"><%= notice %></p>
   </div>
-</div>
+<% end %>
+
+
+      <div class="flex justify-between items-start sm:items-center">
+        <h1><%= @location.name %></h1>
+        <%= link_to "Edit", edit_location_path(@location), class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section>
+  <%= render partial: "overview" %>
+</section>
 
 <div id="search_plants_modal" class="modal-full-screen hidden">
   <%= turbo_frame_tag "search_plants" %>

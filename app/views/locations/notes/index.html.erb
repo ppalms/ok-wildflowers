@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "location_details" do %>
   <%= render "locations/tabs", selected_tab: "notes" %>
 
-  <div class="pt-4 max-w-xl xl:max-w-4xl mx-auto text-sm font-medium">
+  <div class="container pt-4 text-sm font-medium">
     <div class="flex items-center justify-between pb-4">
       <h2>Notes</h2>
       <%= link_to "Add Note", new_location_note_path(@location), class: "btn-primary", data: { turbo_frame: "_top" } %>

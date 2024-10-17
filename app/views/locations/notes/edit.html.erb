@@ -1,5 +1,5 @@
 <div id="edit_<%= dom_id @note %>">
-  <div class="my-6">
+  <div class="container p-6">
     <h1 class="font-bold text-4xl">Editing note</h1>
     <%= render partial: "locations/notes/form", locals: { note: @note } %>
     <%= link_to "Cancel", location_note_path, class: "btn-secondary ml-2" %>

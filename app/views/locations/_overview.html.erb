@@ -1,33 +1,36 @@
 <div id="<%= dom_id @location %>_overview">
   <%= turbo_frame_tag "location_details" do %>
     <%= render "tabs", selected_tab: "overview" %>
+    
+    <div class="container pt-6">
+      <p>
+        <strong>Peak Bloom Months:</strong>
+        <%= @overview[:peak_bloom_months].present? ? @overview[:peak_bloom_months].join(', ') : 'No data available' %>
+      </p>
+      <p>
+        <strong>Dominant Colors:</strong>
+        <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
+      </p>
 
-    <p class="mt-4">
-      <strong>Peak Bloom Months:</strong>
-      <%= @overview[:peak_bloom_months].present? ? @overview[:peak_bloom_months].join(', ') : 'No data available' %>
-    </p>
-    <p>
-      <strong>Dominant Colors:</strong>
-      <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
-    </p>
-    <div class="timeline-container">
-      <div class="timeline">
-        <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
-          <div class="month-header"><%= month %></div>
-        <% end %>
-        <% @overview[:plants_with_bloom_periods].each do |plant_info| %>
-          <% (plant_info[:pre_bloom_months]).times do |i| %>
-            <div class="border-r"></div>
+      <div class="timeline-container">
+        <div class="timeline">
+          <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
+            <div class="month-header"><%= month %></div>
           <% end %>
-          <% interval = plant_info[:bloom_months] %>
-          <div style="grid-column: span <%= interval %> / span <%= interval %>;" class="interval">
-            <%# TODO: allow name to overflow to stay on single line %>
-            <%= plant_info[:common_name] %>
-          </div>
-          <% (plant_info[:post_bloom_months]).times do |i| %>
-            <div class="border-l"></div>
+          <% @overview[:plants_with_bloom_periods].each do |plant_info| %>
+            <% (plant_info[:pre_bloom_months]).times do |i| %>
+              <div class="border-r"></div>
+            <% end %>
+            <% interval = plant_info[:bloom_months] %>
+            <div style="grid-column: span <%= interval %> / span <%= interval %>;" class="interval">
+              <%# TODO: allow name to overflow to stay on single line %>
+              <%= plant_info[:common_name] %>
+            </div>
+            <% (plant_info[:post_bloom_months]).times do |i| %>
+              <div class="border-l"></div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   <% end %>
