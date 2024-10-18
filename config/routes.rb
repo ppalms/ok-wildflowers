@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :locations
   resources :locations, only: [:show] do
-    get 'plants/index', to: 'locations#list_plants', as: 'plants'
+    get 'plants', to: 'locations#list_plants', as: 'plants'
     get 'search_plants', as: 'search_plants'
     post 'plants/add_plant', to: 'locations#add_plant', as: 'add_plant'
     delete 'plants/remove_plant', to: 'locations#remove_plant', as: 'remove_plant'

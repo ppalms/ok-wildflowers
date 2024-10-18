@@ -6,6 +6,7 @@
       <h2>Notes</h2>
       <%= link_to "Add Note", new_location_note_path(@location), class: "btn-primary", data: { turbo_frame: "_top" } %>
     </div>
+
     <ul role="list" class="space-y-6">
       <% @location.notes.each_with_index do |note, index| %>
         <li class="relative flex gap-x-4">

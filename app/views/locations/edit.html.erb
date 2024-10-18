@@ -3,6 +3,6 @@
   <%= turbo_frame_tag @location do %>
     <%= render "form", location: @location %>
     <%= link_to "Cancel", location_path, class: "btn-secondary ml-2" %>
-    <%= button_to "Delete this location", @location, method: :delete, class: "btn-danger", form: { class: "text-center py-4 sm:py-0 sm:inline sm:float-right", data: { turbo_confirm: "Are you sure?", turbo_frame: "_top" } } %>
+    <%= button_to "Delete this location", @location, method: :delete, class: "btn-danger", form: { class: "text-center pt-4 sm:py-0 sm:inline sm:float-right", data: { turbo_confirm: "Are you sure?", turbo_frame: "_top" } } %>
   <% end %>
 </div>

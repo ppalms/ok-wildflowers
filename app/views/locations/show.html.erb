@@ -1,20 +1,19 @@
 <% content_for :title, @location.name %>
 
-<section class="bg-neutral-100">
-  <div class="container pt-6">
+<section class="p-6 sm:pt-4 sm:pb-0 bg-neutral-100 border-b border-gray-200 sm:border-none">
+  <div class="container">
     <div class="py-2">
       <%= link_to sanitize("&larr; Back"), locations_path %>
     </div>
 
     <%= turbo_frame_tag @location do %>
       <% if notice.present? %>
-  <div class="flex justify-center pt-4">
-    <p class="notice" id="notice"><%= notice %></p>
-  </div>
-<% end %>
+        <div class="flex justify-center pt-4">
+          <p class="notice" id="notice"><%= notice %></p>
+        </div>
+      <% end %>
 
-
-      <div class="flex justify-between items-start sm:items-center">
+      <div class="flex justify-between items-center">
         <h1><%= @location.name %></h1>
         <%= link_to "Edit", edit_location_path(@location), class: "btn-primary" %>
       </div>
@@ -22,7 +21,7 @@
   </div>
 </section>
 
-<section>
+<section class="pt-6 px-6 sm:p-0">
   <%= render partial: "overview" %>
 </section>
 
