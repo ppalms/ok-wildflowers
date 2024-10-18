@@ -33,7 +33,9 @@ class NotesTest < ApplicationSystemTestCase
     click_tab "Notes"
     click_on "This is a note"
 
+    assert_text "Edit"
     click_on "Edit"
+    assert_text "Editing note"
 
     fill_in "note_content", with: ""
     click_on "Update Note"
