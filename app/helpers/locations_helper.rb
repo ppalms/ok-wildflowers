@@ -35,14 +35,11 @@ module LocationsHelper
 
     plants.map do |plant|
       bloom_months = plant.bloom_months.order(:id)
-      start_month = bloom_months.first.id
-      end_month = bloom_months.last.id
 
       {
         common_name: plant.common_name,
-        bloom_months: end_month - start_month + 1,
-        pre_bloom_months: start_month - 1,
-        post_bloom_months: 12 - end_month
+        bloom_start: bloom_months.first.id,
+        bloom_end: bloom_months.last.id
       }
     end
   end

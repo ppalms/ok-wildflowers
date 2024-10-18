@@ -17,16 +17,18 @@
           <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
             <div class="month-header"><%= month %></div>
           <% end %>
+
           <% @overview[:plants_with_bloom_periods].each do |plant_info| %>
-            <% (plant_info[:pre_bloom_months]).times do |i| %>
+            <% (plant_info[:bloom_start] - 1).times do |i| %>
               <div class="border-r"></div>
             <% end %>
-            <% interval = plant_info[:bloom_months] %>
-            <div style="grid-column: span <%= interval %> / span <%= interval %>;" class="interval">
-              <%# TODO: allow name to overflow to stay on single line %>
+
+            <% span = plant_info[:bloom_end] - plant_info[:bloom_start] + 1 %>
+            <div style="grid-column: <%= plant_info[:bloom_start] %> / span <%= span %>;" class="interval">
               <%= plant_info[:common_name] %>
             </div>
-            <% (plant_info[:post_bloom_months]).times do |i| %>
+
+            <% (12 - plant_info[:bloom_end]).times do |i| %>
               <div class="border-l"></div>
             <% end %>
           <% end %>
