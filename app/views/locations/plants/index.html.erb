@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "location_details" do %>
   <%= render "tabs", selected_tab: "plants" %>
 
-  <div class="container pt-4 text-sm font-medium">
-    <div class="flex items-center justify-between pb-4">
+  <div class="container pt-6 text-sm font-medium">
+    <div class="flex items-center justify-between pb-6">
       <h2>Plants</h2>
       <%= link_to "Add Plants", location_search_plants_path, data: { turbo_frame: "search_plants" }, onclick: "show('search_plants_modal')", class: "btn-primary" %>
     </div>

@@ -36,7 +36,7 @@
   }
 
   .timeline-container {
-    @apply overflow-x-auto my-4 rounded shadow;
+    @apply overflow-x-auto rounded shadow;
   }
 
   .timeline {

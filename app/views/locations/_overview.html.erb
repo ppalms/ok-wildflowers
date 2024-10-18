@@ -2,17 +2,19 @@
   <%= turbo_frame_tag "location_details" do %>
     <%= render "tabs", selected_tab: "overview" %>
     
-    <div class="container pt-6">
-      <p>
-        <strong>Peak Bloom Months:</strong>
-        <%= @overview[:peak_bloom_months].present? ? @overview[:peak_bloom_months].join(', ') : 'No data available' %>
-      </p>
-      <p>
-        <strong>Dominant Colors:</strong>
-        <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
-      </p>
+    <div class="container">
+      <div class="pt-6">
+        <p>
+          <strong>Peak Bloom Months:</strong>
+          <%= @overview[:peak_bloom_months].present? ? @overview[:peak_bloom_months].join(', ') : 'No data available' %>
+        </p>
+        <p>
+          <strong>Dominant Colors:</strong>
+          <%= @overview[:dominant_bloom_colors].present? ? @overview[:dominant_bloom_colors].join(', ') : 'No data available' %>
+        </p>
+      </div>
 
-      <div class="timeline-container">
+      <div class="timeline-container pt-6">
         <div class="timeline">
           <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
             <div class="month-header"><%= month %></div>
