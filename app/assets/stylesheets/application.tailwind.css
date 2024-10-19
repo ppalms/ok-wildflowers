@@ -47,8 +47,16 @@
     @apply py-1 sm:font-semibold text-center text-white text-xs sm:text-base uppercase bg-stone-700 border-b-2 border-stone-400;
   }
 
+  .timeline > .current-month-header {
+    @apply py-1 sm:font-semibold text-center text-white text-xs sm:text-base uppercase bg-green-700;
+  }
+
   .timeline > .interval {
     @apply bg-stone-300 rounded-xl h-8 border-b-2 sm:border-b-4 my-0.5 sm:my-1 border-stone-400 flex items-center justify-center text-stone-800 text-sm sm:text-base sm:font-medium font-medium whitespace-nowrap;
+  }
+
+  .timeline > .current-month {
+    @apply bg-green-600;
   }
 
   .tab {

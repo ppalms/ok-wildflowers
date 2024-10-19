@@ -14,15 +14,20 @@
         </p>
       </div>
 
-      <div class="timeline-container pt-6">
+      <div class="timeline-container mt-6">
         <div class="timeline">
-          <% Date::ABBR_MONTHNAMES.compact.each do |month| %>
-            <div class="month-header"><%= month %></div>
+          <% current_month = Date.today.month %>
+          <% Date::ABBR_MONTHNAMES.compact.each_with_index do |month, index| %>
+            <% month_index = index + 1 %>
+            <div class="<%= month_index == current_month ? 'current-month-header' : 'month-header' %>">
+              <%= month %>
+            </div>
           <% end %>
 
           <% @overview[:plants_with_bloom_periods].each do |plant_info| %>
             <% (plant_info[:bloom_start] - 1).times do |i| %>
-              <div class="border-r"></div>
+              <% month_index = i + 1 %>
+              <div class="border-r <%= 'current-month' if month_index == current_month %>"></div>
             <% end %>
 
             <% span = plant_info[:bloom_end] - plant_info[:bloom_start] + 1 %>
@@ -31,7 +36,8 @@
             </div>
 
             <% (12 - plant_info[:bloom_end]).times do |i| %>
-              <div class="border-l"></div>
+              <% month_index = plant_info[:bloom_end] + i + 1 %>
+              <div class="border-l <%= 'current-month' if month_index == current_month %>"></div>
             <% end %>
           <% end %>
         </div>
