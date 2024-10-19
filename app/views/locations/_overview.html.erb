@@ -19,7 +19,7 @@
           <% current_month = Date.today.month %>
           <% Date::ABBR_MONTHNAMES.compact.each_with_index do |month, index| %>
             <% month_index = index + 1 %>
-            <div class="<%= month_index == current_month ? 'current-month-header' : 'month-header' %>">
+            <div class="<%= month_index == current_month ? 'current-month-header' : 'month-header' %>" id="<%= month_index == current_month ? 'current-month-header' : "month-#{month_index}" %>">
               <%= month %>
             </div>
           <% end %>
@@ -45,3 +45,19 @@
     </div>
   <% end %>
 </div>
+
+<script>
+function scrollToCurrentMonth() {
+  const currentMonthElement = document.getElementById('current-month-header');
+  if (currentMonthElement) {
+    currentMonthElement.scrollIntoView({
+      behavior: 'instant',
+      block: 'nearest',
+      inline: 'center'
+    });
+  }
+}
+
+document.addEventListener('turbo:frame-load', scrollToCurrentMonth);
+document.addEventListener('turbo:load', scrollToCurrentMonth);
+</script>
