@@ -67,13 +67,13 @@ class PlantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_plant
-      @plant = tenant.plants.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_plant
+    @plant = tenant.plants.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def plant_params
-      params.require(:plant).permit(:scientific_name, :common_name, :other_common_names_list, :photo, bloom_color_ids: [], bloom_month_ids: [])
-    end
+  # Only allow a list of trusted parameters through.
+  def plant_params
+    params.require(:plant).permit(:scientific_name, :common_name, :other_common_names_list, :photo, bloom_color_ids: [], bloom_month_ids: [])
+  end
 end

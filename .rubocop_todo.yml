@@ -21,23 +21,6 @@ Layout/EmptyLinesAroundAccessModifier:
     - "app/controllers/plants_controller.rb"
     - "db/migrate/20240802004643_create_active_storage_tables.active_storage.rb"
 
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: normal, indented_internal_methods
-Layout/IndentationConsistency:
-  Exclude:
-    - "app/controllers/plants_controller.rb"
-    - "db/migrate/20240802004643_create_active_storage_tables.active_storage.rb"
-
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Width, AllowedPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - "app/controllers/plants_controller.rb"
-    - "db/migrate/20240802004643_create_active_storage_tables.active_storage.rb"
-
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, IndentationWidth.

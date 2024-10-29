@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-- Ruby 3.2.4
+- Ruby 3.3.5
 - Docker
 
 ## Getting Started
@@ -15,15 +15,17 @@ Run `bin/setup` from the project root. The setup script will take care of the fo
 - Create a development database in a Docker container
 - Prepare the database and run all migrations
 
-Run `bin/dev` to run the app at *http://localhost:3000*
+Run `bin/dev` to run the app at *<http://localhost:3000>*
 
 ## Infrastructure
 
 ### DigitalOcean
+
 - App droplet (1 GB Memory / 25 GB Disk - Ubuntu 24.04 (LTS) x64)
 - Database droplet (1 GB Memory / 25 GB Disk - Ubuntu 24.04 (LTS) x64)
 
 ### AWS
+
 - S3 bucket for [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html)
 - SES configuration for [Action Mailer](https://guides.rubyonrails.org/action_mailer_basics.html)
 - IAM user account for sending email
@@ -41,4 +43,3 @@ Run `bin/dev` to run the app at *http://localhost:3000*
 
 - Search production logs
   - `kamal app logs -g <request ID or something else>`
-
